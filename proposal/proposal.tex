@@ -1,0 +1,52 @@
+\documentclass{article}
+
+\usepackage[doublespacing]{setspace}
+\usepackage[margin=1in]{geometry}
+
+\title  {``Bees?''\\ A Large Scale, Co-operative Simulation Weighing Altruism and Selfishness}
+\author {Alexander Simms, Ravenna Thielstrom}
+\date   {CS 81: Adaptive Robotics, Spring 2014}
+
+\begin{document}
+
+\maketitle
+
+%\section{Introduction} % (fold)
+%\label{sec:introduction}
+
+
+% section introduction (end)
+
+
+\section{Learning Task} % (fold)
+\label{sec:learning_task}
+
+	For our final project, we'd like to explore conditions for artificial altruism or selfishness. In other words, can separate, independent agents learn to behave cooperatively under certain conditions? The objective of our project is to simulate a hive-like community of agents, which we will call \emph{Bees?}, to distinguish them from their real-world counterpart, for which they are named. Every ``day'', each \emph{Bee?} will be sent away from the hive to collect nectar. The nectar found by each \emph{Bee?} will be represented by a floating-point number between 0 and 1. After the nectar is found, each \emph{Bee?} will have the choice either to consume the nectar itself or to return to the hive with the found nectar. Nectar that is brought back to the hive will be pooled and redistributed evenly to all of the of \emph{Bees?} that brought back nectar. Neural nets will be evolved to maximize the amount of food each \emph{Bee?} receives during its lifespan, before it is replaced by a member of a new population.
+		
+%	Therefore, based on how much total nectar a \emph{Bee?} ultimately consumed, neural networks will evolve using the NEAT methodology to enable each \emph{Bee?} to make either more selfish or more altruistic decisions.
+
+% section learning_task (end)
+
+
+\section{Adaptive Method} % (fold)
+\label{sec:adaptive_method}
+
+	The adaptive method that we have chosen to use is Kenneth O. Stanley's ``NEAT,'' or NeuroEvolution of Adapting Topologies, technique. We intend for each ``day'' within the simulation to be one generation of NEAT agents, each one of which is one of our \emph{Bees?}. Each simulated agent will have only one input, and one output: the input is a float between 0 and 1 that indicates how much nectar the agent has found, and the output will be a float between 0 and 1 that we will round to the nearest integer (either 0 or 1). This integer will indicate whether the \emph{Bee?} has chosen to eat the nectar on its own, or to take it back to the hive. The fitness for each agent will simply be the amount of nectar it got to eat that day, either selfishly, while it was away from the hive, or its portion of the shared nectar. 
+	
+	If we have enough time, we may also include a mechanism by which each \emph{Bee?} can decide to eat only some of the honey, and bring the rest back to the hive. With this mechanism, however, the amount of nectar that the hive gives out would probably have to be proportional to the amount of nectar that any individual \emph{Bee?} gives it. We may also implement an additional output with which the \emph{Bees?} may choose whether they will return to the hive after finding nectar or continue searching outside of the hive, with a possible disadvantage of missing feeding times back at the hive.
+
+% section adaptive_method (end)
+
+\section{Hypothesis} % (fold)
+\label{sec:hypothesis}
+	The two experimenters are currently in conflict as to whether the \emph{Bees?} will ultimately evolve selfish or altruistic behavior. However, it seems likely that the population may develop factions of altruistic \emph{Bees?} and factions of selfish \emph{Bees?}, due to speciation within NEAT, and that although the hive may predominantly adopt one kind of behavior, there will still be outliers that may drag the ratio back towards the middle. It also seems likely that the first few random decisions made by the first generation neural networks will be highly influential on the rest of the experiment, since evolution will occur based on how much the hive suffered or benefited due to the actions of the various \emph{Bees?}.
+
+% section hypothesis (end)
+
+\section{Analysis} % (fold)
+\label{sec:analysis}
+	Our analysis of results will mainly be focused on the decisions that the majority of \emph{Bees?} make in later generations. If most \emph{Bees?} seem to be eating the honey for themselves, this suggests that a community of artificially intelligent agents in this scenario are unable to form a cooperative, mutually beneficial community, probably because it is simply not beneficial to do so. Of course, we will have to retrain and rerun the experiment multiple times in order to determine if the majority behavior is a consistent result or if it relies on some specific factor such as the randomly generated decisions of the first generation (which we will examine for each training). Some modifications may also have to be made to the experimental set up, because it is well-known that evolutionary algorithms, and neural nets in general, are good at finding loopholes in experimental setups.
+
+% section analysis (end)
+
+\end{document}
