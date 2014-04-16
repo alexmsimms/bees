@@ -36,7 +36,7 @@ def main():
     #plot.plot_hive_vitality()
 
     
-def eval_fitness(population):
+def eval_fitness(populationl, numtrials):
 
     #last_decision = []
     #last_majority = []
@@ -45,40 +45,37 @@ def eval_fitness(population):
     #for i in range(len(population)):  #initialize last nectar array
     #  last_nectar[i] = 0.5
 
-    days = []
+ 
+    sumfood = []
 
     altruistic = 0
     selfish = 0
 
  
-    for i in range(3):
-        days.append = eval_trial(population)
-    
-    for trial in days:
-      #day by day
+    for i in range(numtrials):
+        day = eval_trial(population)
 
-      for i in range(len(trial)):
-        #bee by bee
+        for j in range(len(day)):
+          #bee by bee
 
-        hive_nectar = trial[i][0][1]
-        if hive_nectar > 10:
-            modifier = 1
-        elif hive_nectar > 0:
-            modifier = hive_nectar / 10
-        else:
-            modifier = .01 #if you give something 0 fitness,
+          hive_nectar = trial[i][0][1]
+          if hive_nectar > 10:
+              modifier = 1
+          elif hive_nectar > 0:
+              modifier = hive_nectar / 10
+          else:
+              modifier = .01 #if you give something 0 fitness,
                        #can get div by 0 error
 
+          if day[j][1] < 0:
+              sumfood[j] = avg * modifier
+              altruistic+=1
+          else:
+              sumfood[j] = day[j][0][0] * modifier
+              selfish+=1
 
-        if trial[i][1] < 0:
-            sumfood[i] = avg * modifier
-            altruistic+=1
-        else:
-            sumfood[i] = trial[i][0][0] * modifier
-            selfish+=1
-
-    for i in range(len(population)):
-        population[i].fitness = sumfood[i]/3
+    for k in range(len(population)):
+        population[k].fitness = sumfood[k]/numtrials
 
     """
     for chromo, production in zip(population, days):
