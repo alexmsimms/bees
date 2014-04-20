@@ -2,7 +2,7 @@ from neat import config, population, chromosome, genome, visualize
 from neat.nn import nn_pure as nn
 import random
 import plot
-from bee import BEE
+from bee import Bee
 out = open("log.csv", 'w')
 hive_life = open("hive.csv", 'w')
 exp = open("neg.txt", 'w')
@@ -25,9 +25,9 @@ def main():
 
 def eval_fitness(population):
     hive = [Bee(chromo) for chromo in population]
-    for day in week_length:
+    for day in xrange(week_length):
         one_day(hive)
-    for i in range(len(population)):
+    for i in xrange(len(population)):
         population[i].fitness = hive[i].avg_fitness()
 
 def one_day(hive):
