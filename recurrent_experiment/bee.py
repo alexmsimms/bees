@@ -14,7 +14,7 @@ class Bee(object):
         return self.outputs[-1][0] > 0
 
     def found_nectar(self):
-        return self.outputs[-1][0]
+        return self.inputs[-1][0]
 
     def set_fitness(self, fitness):
         self.fitnesses.append(fitness)
