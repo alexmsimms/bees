@@ -23,8 +23,8 @@ def plot_bee_pops():
 	# title("Prediction vs Reality for The Mt.Gox Crash")
 	# title("Prediction vs Reality for BTC-e Prices")
 	legend(("Altruistic Bees?", "Selfish Bees?"))
-	xlabel("Population")
-	ylabel("Generation")
+	xlabel("Generation")
+	ylabel("Population")
 	show()
 
 
@@ -36,8 +36,8 @@ def plot_hive_vitality():
 
 	plot(time, hive_vitality)
 	axhline(color='r')
-	xlabel("Nectar Reserves")
-	ylabel("Generation")
+	xlabel("Generation")
+	ylabel("Nectar Reserves")
 	show()
 
 
