@@ -8,10 +8,10 @@ class Bee(object):
         self.fitnesses = [.5]
 
     def was_selfish(self):
-        return self.outputs[-1] <= 0
+        return self.outputs[-1][0] <= 0
 
     def was_altruistic(self):
-        return self.outputs[-1] > 0
+        return self.outputs[-1][0] > 0
 
     def found_nectar(self):
         return self.outputs[-1][0]
@@ -26,7 +26,6 @@ class Bee(object):
     def evaluate(self, hive_nectar):
         brain = nn.create_phenotype(self.chromo)
         found_nectar = random.random()
-        print self.outputs
         ins = (found_nectar, 
                self.outputs[-1][0], 
                self.fitnesses[-1], 

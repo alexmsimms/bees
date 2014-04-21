@@ -1,0 +1,52 @@
+8
+
+dir
+347
+http://neat-python.googlecode.com/svn/trunk/neat/ctrnn
+http://neat-python.googlecode.com/svn
+
+
+
+2008-04-08T22:48:04.663797Z
+321
+cesar.gomes
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+3a2a2d67-9b3a-0410-8382-8b98c2212edd
+
+__init__.py
+file
+
+
+
+
+2008-10-02T13:45:08.000000Z
+d41d8cd98f00b204e9800998ecf8427e
+2008-04-01T22:49:51.909171Z
+302
+cesar.gomes
+
+ctrnn.py
+file
+
+
+
+
+2008-10-02T13:45:08.000000Z
+837f08f8cec5b4f34264f491acf90629
+2008-04-08T22:45:47.972935Z
+320
+cesar.gomes
+

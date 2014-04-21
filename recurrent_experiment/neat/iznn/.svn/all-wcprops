@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 33
+/svn/!svn/ver/347/trunk/neat/iznn
+END
+iznn.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/308/trunk/neat/iznn/iznn.cpp
+END
+iznn_pure.py
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/347/trunk/neat/iznn/iznn_pure.py
+END
+network.py
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/347/trunk/neat/iznn/network.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/317/trunk/neat/iznn/__init__.py
+END
+synapse.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/308/trunk/neat/iznn/synapse.hpp
+END
+neuron.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/317/trunk/neat/iznn/neuron.hpp
+END

@@ -7,7 +7,7 @@ out = open("log.csv", 'w')
 hive_life = open("hive.csv", 'w')
 exp = open("neg.txt", 'w')
 hive_nectar = 10.0
-week_length = 3
+week_length = 7
 
 def main():
     config.load('NEATconfig')
@@ -31,6 +31,8 @@ def eval_fitness(population):
         population[i].fitness = hive[i].avg_fitness()
 
 def one_day(hive):
+    global hive_nectar
+    
     for bee in hive:
         bee.evaluate(hive_nectar)
 
@@ -38,7 +40,6 @@ def one_day(hive):
 
     nectar_brought_in = sum(pool)
 
-    global hive_nectar
     hive_nectar -= 1 # Food to feed the queen bee?
     if hive_nectar < 10:
         hive_nectar += nectar_brought_in * .25
@@ -52,7 +53,7 @@ def one_day(hive):
     elif hive_nectar > 0:
         modifier = hive_nectar /10
     else:
-        modifier = .0000000000000000001 
+        modifier = .001 
                    #if you give something 0 fitness,
                    #can get div by 0 errors
 

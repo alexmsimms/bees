@@ -1,0 +1,67 @@
+8
+
+dir
+347
+http://neat-python.googlecode.com/svn/trunk/neat/nn
+http://neat-python.googlecode.com/svn
+
+
+
+2008-06-05T16:04:02.716092Z
+344
+cesar.gomes
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+3a2a2d67-9b3a-0410-8382-8b98c2212edd
+
+nn_cpp.py
+file
+
+
+
+
+2008-10-02T13:45:11.000000Z
+ca4ed3933ad2350a9b1ebaace3f78116
+2008-04-12T06:36:34.259408Z
+332
+cesar.gomes
+
+__init__.py
+file
+
+
+
+
+2008-10-02T13:45:11.000000Z
+d41d8cd98f00b204e9800998ecf8427e
+2008-04-01T22:44:02.178307Z
+301
+cesar.gomes
+
+nn_cpp
+dir
+
+nn_pure.py
+file
+
+
+
+
+2008-10-02T13:45:11.000000Z
+28c0c972502d7861d77b2511c5805a69
+2008-06-05T16:04:02.716092Z
+344
+cesar.gomes
+
