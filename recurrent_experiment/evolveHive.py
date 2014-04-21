@@ -32,7 +32,7 @@ def eval_fitness(population):
 
 def one_day(hive):
     global hive_nectar
-    
+
     for bee in hive:
         bee.evaluate(hive_nectar)
 
@@ -69,14 +69,6 @@ def one_day(hive):
             selfish+=1
     out.write("{},{}\n".format(altruistic, selfish))
 
-def eval_individual(chromo, last_choice, last_fitness, hive_nectar):
-    brain = nn.create_phenotype(chromo)
-    found_nectar = random.random()
-
-    brain.flush()
-    output = brain.sactivate([found_nectar, last_choice, last_fitness, hive_nectar])
-    exp.write(str(output[0])+'\n')
-    return (found_nectar, output[0])
 
 if __name__ == '__main__':
     main()
