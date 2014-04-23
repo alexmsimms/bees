@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 31
+/svn/!svn/ver/344/trunk/neat/nn
+END
+nn_cpp.py
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/332/trunk/neat/nn/nn_cpp.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/308/trunk/neat/nn/__init__.py
+END
+nn_pure.py
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/344/trunk/neat/nn/nn_pure.py
+END

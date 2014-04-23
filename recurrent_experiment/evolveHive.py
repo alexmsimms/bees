@@ -2,12 +2,12 @@ from neat import config, population, chromosome, genome, visualize
 from neat.nn import nn_pure as nn
 import random
 import plot
-from bee import BEE
+from bee import Bee
 out = open("log.csv", 'w')
 hive_life = open("hive.csv", 'w')
 exp = open("neg.txt", 'w')
 hive_nectar = 10.0
-week_length = 3
+week_length = 7
 
 def main():
     config.load('NEATconfig')
@@ -25,12 +25,14 @@ def main():
 
 def eval_fitness(population):
     hive = [Bee(chromo) for chromo in population]
-    for day in week_length:
+    for day in xrange(week_length):
         one_day(hive)
-    for i in range(len(population)):
+    for i in xrange(len(population)):
         population[i].fitness = hive[i].avg_fitness()
 
 def one_day(hive):
+    global hive_nectar
+
     for bee in hive:
         bee.evaluate(hive_nectar)
 
@@ -38,7 +40,6 @@ def one_day(hive):
 
     nectar_brought_in = sum(pool)
 
-    global hive_nectar
     hive_nectar -= 1 # Food to feed the queen bee?
     if hive_nectar < 10:
         hive_nectar += nectar_brought_in * .25
@@ -52,7 +53,7 @@ def one_day(hive):
     elif hive_nectar > 0:
         modifier = hive_nectar /10
     else:
-        modifier = .0000000000000000001 
+        modifier = .001 
                    #if you give something 0 fitness,
                    #can get div by 0 errors
 
@@ -68,14 +69,6 @@ def one_day(hive):
             selfish+=1
     out.write("{},{}\n".format(altruistic, selfish))
 
-def eval_individual(chromo, last_choice, last_fitness, hive_nectar):
-    brain = nn.create_phenotype(chromo)
-    found_nectar = random.random()
-
-    brain.flush()
-    output = brain.sactivate([found_nectar, last_choice, last_fitness, hive_nectar])
-    exp.write(str(output[0])+'\n')
-    return (found_nectar, output[0])
 
 if __name__ == '__main__':
     main()
