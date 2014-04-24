@@ -1,1 +1,195 @@
 \documentclass{article}
+\usepackage[doublespacing]{setspace}
+% \usepackage[margin=1in]{geometry}
+\usepackage{lipsum}
+
+\title  {``Bees?''\\ A Large Scale, Co-operative Simulation 
+         Weighing Altruism and Selfishness}
+\author {Alexander Simms, Ravenna Thielstrom}
+\date   {CS 81: Adaptive Robotics, Spring 2014}
+\begin{document}
+	\maketitle
+
+	\begin{abstract}
+		% A short abstract of 200 to 300 words summarizing your findings. 
+		\lipsum[1]
+	\end{abstract}
+
+	\section{Introduction} % (fold)
+	\label{sec:introduction}
+		% An introduction that contrasts your study with other related work. 
+		% Find and read at least three articles related to your experiment and 
+		% discuss these papers here. 
+		\lipsum[3-8]
+	% section introduction (end)
+
+	\section{Experiments} % (fold)
+	\label{sec:experiments}
+		% A detailed description of your experiments. 
+		% There should be enough information provided so that someone could 
+		% reproduce your experiments. 
+		\subsection{Basic Experiment} % (fold)
+		\label{sub:basic_experiment}
+		\lipsum[8-10]
+		% subsection basic_experiment (end)
+
+		\subsection{Hive Fitness} % (fold)
+		\label{sub:hive_fitness}
+		\lipsum[10-12]
+		% subsection hive_fitness (end)
+
+		\subsection{Recurrent Networks} % (fold)
+		\label{sub:recurrent_networks}
+		\lipsum[12-14]
+		% subsection recurrent_networks (end)
+
+	% section experiments (end)
+
+	\section{Discussion} % (fold)
+	\label{sec:discussion}
+	\lipsum[14-20]
+	% section discussion (end)
+	\singlespacing
+	\appendix
+	\pagebreak
+	\section{NEAT Configurations} % (fold)
+	\label{sec:neat_configurations}
+	
+		\subsection{Configuration for Basic Experiment} % (fold)
+		\label{sub:configuration_for_basic_experiment}
+			\begin{verbatim}
+				[phenotype]
+				input_nodes         = 1
+				output_nodes        = 1
+				max_weight          = 30
+				min_weight          = -30
+				feedforward         = 0
+				nn_activation       = tanh 
+				hidden_nodes        = 0
+				weight_stdev        = 0.9
+
+				[genetic]
+				pop_size              = 50
+				max_fitness_threshold = 1
+
+				# Human reasoning
+				prob_addconn          = 0.05
+				prob_addnode          = 0.03
+				prob_mutatebias       = 0.2
+				bias_mutation_power   = 0.5
+				prob_mutate_weight    = 0.9
+				weight_mutation_power = 1.5
+				prob_togglelink       = 0.01
+				elitism               = 1
+
+				[genotype compatibility]
+				compatibility_threshold = 3.0
+				compatibility_change    = 0.0
+				excess_coeficient       = 1.0
+				disjoint_coeficient     = 1.0
+				weight_coeficient       = 0.4
+
+				[species]
+				species_size        = 10
+				survival_threshold  = 0.2
+				old_threshold       = 30
+				youth_threshold     = 10
+				old_penalty         = 0.2
+				youth_boost         = 1.2
+				max_stagnation      = 15
+			\end{verbatim}
+		% subsection configuration_for_basic_experiment (end)
+
+		\pagebreak
+		\subsection{Configuration for Hive Fitness} % (fold)
+		\label{sub:configuration_for_hive_fitness}
+			\begin{verbatim}
+				[phenotype]
+				input_nodes         = 1
+				output_nodes        = 1
+				max_weight          = 30
+				min_weight          = -30
+				feedforward         = 0
+				nn_activation       = tanh 
+				hidden_nodes        = 0
+				weight_stdev        = 0.9
+
+				[genetic]
+				pop_size              = 50
+				max_fitness_threshold = 1
+
+				# Human reasoning
+				prob_addconn          = 0.05
+				prob_addnode          = 0.03
+				prob_mutatebias       = 0.2
+				bias_mutation_power   = 0.5
+				prob_mutate_weight    = 0.9
+				weight_mutation_power = 1.5
+				prob_togglelink       = 0.01
+				elitism               = 1
+
+				[genotype compatibility]
+				compatibility_threshold = 3.0
+				compatibility_change    = 0.0
+				excess_coeficient       = 1.0
+				disjoint_coeficient     = 1.0
+				weight_coeficient       = 0.4
+
+				[species]
+				species_size        = 10
+				survival_threshold  = 0.2
+				old_threshold       = 30
+				youth_threshold     = 10
+				old_penalty         = 0.2
+				youth_boost         = 1.2
+				max_stagnation      = 15
+			\end{verbatim}
+		% subsection configuration_for_hive_fitness (end)
+
+		\pagebreak
+		\subsection{Configuration for Recurrent Networks} % (fold)
+		\label{sub:configuration_for_recurrent_networks}
+			\begin{verbatim}
+				[phenotype]
+				input_nodes         = 4
+				output_nodes        = 1
+				max_weight          = 30
+				min_weight          = -30
+				feedforward         = 0
+				nn_activation       = tanh 
+				hidden_nodes        = 0
+				weight_stdev        = 0.9
+
+				[genetic]
+				pop_size              = 50
+				max_fitness_threshold = 1
+
+				# Human reasoning
+				prob_addconn          = 0.05
+				prob_addnode          = 0.03
+				prob_mutatebias       = 0.2
+				bias_mutation_power   = 0.5
+				prob_mutate_weight    = 0.9
+				weight_mutation_power = 1.5
+				prob_togglelink       = 0.01
+				elitism               = 1
+
+				[genotype compatibility]
+				compatibility_threshold = 3.0
+				compatibility_change    = 0.0
+				excess_coeficient       = 1.0
+				disjoint_coeficient     = 1.0
+				weight_coeficient       = 0.4
+
+				[species]
+				species_size        = 10
+				survival_threshold  = 0.2
+				old_threshold       = 30
+				youth_threshold     = 10
+				old_penalty         = 0.2
+				youth_boost         = 1.2
+				max_stagnation      = 15
+			\end{verbatim}
+		% subsection configuration_for_recurrent_networks (end)
+	% section neat_configurations (end)
+\end{document}
