@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 33
+/svn/!svn/ver/338/trunk/neat/ifnn
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/324/trunk/neat/ifnn/__init__.py
+END
+synapse.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/322/trunk/neat/ifnn/synapse.hpp
+END
+ifnn.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/322/trunk/neat/ifnn/ifnn.cpp
+END
+ifnn_pure.py
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/338/trunk/neat/ifnn/ifnn_pure.py
+END
+neuron.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/338/trunk/neat/ifnn/neuron.hpp
+END

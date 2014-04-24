@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/337/trunk/neat/nn/nn_cpp
+END
+ANN.h
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/331/trunk/neat/nn/nn_cpp/ANN.h
+END
+ANN_python.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/337/trunk/neat/nn/nn_cpp/ANN_python.hpp
+END
+ANN.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/337/trunk/neat/nn/nn_cpp/ANN.cpp
+END
+VectorMatrix.h
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/331/trunk/neat/nn/nn_cpp/VectorMatrix.h
+END
+ANN_python.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/331/trunk/neat/nn/nn_cpp/ANN_python.cpp
+END
