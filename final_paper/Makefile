@@ -1,2 +1,2 @@
-TARGET=final
+TARGET=bees
 include Makefile.include
