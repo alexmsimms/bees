@@ -19,68 +19,55 @@
         \tableofcontents
     \end{frame}
 
+    \section{Overview} % (fold)
+    \label{sec:overview}
+        \begin{frame}{Overview}
+            \begin{itemize}
+                \item Attempting to investigate conditions for selfishness and altruism in a community
+                      of neural-net agents.
+                \item Can we get co-operation from a large number of independent agents?
+                % \item 
+            \end{itemize}
+        \end{frame}
+    % section overview (end)
 
-    \section{Overview}
 
-    \begin{frame}{Overview}
-        \begin{itemize}
-            \item Attempting to investigate conditions for selfishness and altruism in a community
-                  of neural-net agents.
-            \item Can we get co-operation from a large number of independent agents?
-            % \item 
-        \end{itemize}
-    \end{frame}
+    \section{Model} % (fold)
+    \label{sec:model}
+        \subsection{Bees?}
+        \begin{frame}{The Bee model}
+            \begin{itemize}
+                \item Many individual ``bees'' in a ``hive''.
+                \item Each bee is an individual NEAT agent.
+            \end{itemize}
+        \end{frame}
 
-    \section{Experiment}
-
-    \subsection{Bees?}
-    \begin{frame}{The Bee model}
-        \begin{itemize}
-            \item Many individual ``bees'' in a ``hive''.
-            \item Each bee is an individual NEAT agent.
-        \end{itemize}
-    \end{frame}
-
-    \begin{frame}{A day in the life of a bee}
-        Every ``day'' in the simulation:
-        \begin{itemize}
-            \item Each bee goes out to get ``nectar''
-            \item Has the decision to eat the nectar there, or bring it back to the hive
-            \item At the hive, the nectar brought back by the bees is shared equally between 
-                  the bees that brought back nectar
-        \end{itemize}
-        Fitness is determined by how much nectar a bee gets in a given day.
-    \end{frame}
+        \begin{frame}{A day in the life of a bee}
+            Every ``day'' in the simulation:
+            \begin{itemize}
+                \item Each bee goes out to get ``nectar''
+                \item Has the decision to eat the nectar there, or bring it back to the hive
+                \item At the hive, the nectar brought back by the bees is shared equally between 
+                      the bees that brought back nectar
+            \end{itemize}
+            With a specified lifetime of days, fitness is determined by the average nectar that 
+            a bee accumulates throughout its lifetime.
+        \end{frame}
+    
+    % section model (end)
 
     \subsection{Implementation}
     \begin{frame}{NEAT Implementation}
         % TODO: Move this into the experiments, make a new one for each.
         \includegraphics[height=3cm]{bee.png}
+        
+        \begin{itemize}
+          \item Other varied inputs: last decision, hive nectar, majority decision, last fitness, last guidance decision
     \end{frame}
 
     \section{Hypothesis}
-    \subsection{Outlooks}
-    \begin{frame}{Dueling Outlooks}
-        \begin{columns}[t]
-            \column{.5\textwidth}
-                \begin{block}{Alex the Pessimist}
-                        Neural nets insufficiently complicated for altruistic behavior to arise 
-                        without considerable prompting.
-                \end{block}
-            \column{.5\textwidth}
-                \begin{block}{Ravenna the Optimist}
-                        Agents will eventually figure out that the greatest benefit can be obtained 
-                        through altruism.
-                    \begin{quote}
-                        ``I want to believe!''
-                        \begin{flushright}
-                            -Ravenna
-                        \end{flushright} 
-                    \end{quote}
-                \end{block}
-        \end{columns}
-    \end{frame}
 
+    
     \subsection{Experimental Ideas}
     \begin{frame}{Most conducive environments to altruism}
         \begin{itemize}
@@ -107,6 +94,7 @@
 
         \end{itemize}
     \end{frame}
+
 
     \section{Experiments}
 
@@ -171,6 +159,12 @@
     \end{frame}
 
     % Message passing Bees
+    \section{Data Analysis}
+    \begin{frame}{Data Analysis}
+        \begin{itemize}
+          \item Hive fitness not only deducts fitness for hive-endangering bees but also reduces the possible benefits of altruism
+          \item Selfishness will initially always be the ``better'' option
+
 
     \section{Q and A}
     \begin{frame}{Questions?}
