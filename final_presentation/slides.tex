@@ -3,7 +3,7 @@
 
 \title[Bees?]{``Bees?''\\ A Large Scale, Co-operative Simulation Weighing
                           Altruism and Selfishness}
-%\author{A. Simms, R. Thielstrom}
+\author{A. Simms, R. Thielstrom}
 \institute{Swarthmore College}
 \date{Adaptive Robotics, Spring 2014}
 
@@ -54,12 +54,11 @@
 
     \subsection{Implementation}
     \begin{frame}{NEAT Implementation}
+        % TODO: Move this into the experiments, make a new one for each.
         \includegraphics[height=3cm]{bee.png}
     \end{frame}
 
     \section{Hypothesis}
-
-
     \subsection{Outlooks}
     \begin{frame}{Dueling Outlooks}
         \begin{columns}[t]
@@ -101,12 +100,12 @@
 
     \subsection{Hypothesis}
     \begin{frame}{Hypothesis}
-            \begin{itemize}
-                    \item We predict that the amount of altruism and selfishness demonstrated in 
-                          NEAT-trained agents will be most affected by an individual fitness relying
-                          on overall group fitness.
+        \begin{itemize}
+                \item We predict that the amount of altruism and selfishness demonstrated in 
+                      NEAT-trained agents will be most affected by an individual fitness relying
+                      on overall group fitness.
 
-            \end{itemize}
+        \end{itemize}
     \end{frame}
 
     \section{Experiments}
@@ -132,13 +131,10 @@
         \end{itemize}
     \end{frame}
 
-
     \begin{frame}{The Only Difference is Hive Fitness}
         \begin{figure}
-            
         \includegraphics[width=8cm]{hive_influenced_bees.png}
         \end{figure}
-    
     \end{frame}
 
     \begin{frame}{``Nectar Reserves'' Over Time}
@@ -147,6 +143,34 @@
         \end{figure}
     \end{frame}
 
+    \begin{frame}[t]\frametitle{Recurrent networks}
+        
+        \begin{itemize}
+            \item Bees live more than one day, why shouldn't our simulated bees?
+            \item Drawing inspiration from evolutionary game theory
+            \begin{itemize}
+                \item Iterated prisoner's dilemma.
+            \end{itemize}
+        \end{itemize}
+    
+    \end{frame}
+
+    \begin{frame}[t]\frametitle{Recurrent Bee Networks!}
+        
+        \begin{itemize}
+            \item Bees live for a ``week''
+            \item Each ``day'', they go out to find nectar
+            \bigskip
+            \item Inputs each day:
+            \begin{itemize}
+                \item Nectar found
+                \item 
+            \end{itemize}
+        \end{itemize}
+    
+    \end{frame}
+
+    % Message passing Bees
 
     \section{Q and A}
     \begin{frame}{Questions?}
