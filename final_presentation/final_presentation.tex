@@ -1,7 +1,7 @@
 \documentclass{beamer}
 \usepackage{graphicx}
 
-\usetheme{Luebeck}
+\usetheme{Antibes}
 \usecolortheme{crane}
 
 \AtBeginSection[]
@@ -37,7 +37,7 @@
   \section{Overview} % (fold)
   \label{sec:overview}
 
-    \begin{frame}[t]\frametitle{Abstract}
+    \begin{frame}[c]\frametitle{Abstract}
       \begin{itemize}
         \item Attempting to investigate conditions for selfishness and altruism
               in a community of neural-net agents.
@@ -49,14 +49,14 @@
     \subsection{Model} % (fold)
     \label{sub:model}
       
-      \begin{frame}[t]\frametitle{The Bee model}
+      \begin{frame}[c]\frametitle{The Bee model}
         \begin{itemize}
           \item Many individual ``bees'' in a ``hive''.
           \item Each bee is an individual NEAT agent.
         \end{itemize}
       \end{frame}
 
-    \begin{frame}[t]\frametitle{A day in the life of a bee}
+    \begin{frame}[c]\frametitle{A day in the life of a bee}
       Every ``day'' in the simulation:
       \begin{itemize}
         \item Each bee goes out to get ``nectar''
@@ -78,7 +78,7 @@
     \subsection{Hypothesis} % (fold)
     \label{sub:hypothesis}
 
-      \begin{frame}[t]\frametitle{Hypothesis}
+      \begin{frame}[c]\frametitle{Hypothesis}
           
           The amount of altruism and selfishness demonstrated in NEAT-trained
           agents will be most affected by an individual fitness relying
@@ -94,9 +94,16 @@
       \subsubsection{Methods} % (fold)
       \label{ssub:methods}
       
-        \begin{frame}[t]\frametitle{Methods of the Basic Experiment}
-        
-            % TODO: basically the same as the ones outlined above
+        \begin{frame}[c]\frametitle{Methods of the Basic Experiment}
+          Every ``day'' in the simulation:
+          \begin{itemize}
+            \item Each bee goes out to get ``nectar''
+            \item Has the decision to eat the nectar there, or bring it 
+                  back to the hive
+            \item At the hive, the nectar brought back by the bees is 
+                  shared equally between the bees that brought back nectar.
+            \end{itemize}
+            One ``day'' is one NEAT generation.
         
         \end{frame}
 
@@ -106,17 +113,16 @@
       \label{ssub:results}
 
         \begin{frame}[t]\frametitle{Composition of the Hive Over Time}
-            % TODO:
-            % Rerun the experiment with the proper activation function
-            % Put results here.
-        
+          \begin{figure}
+          \includegraphics[width=8cm]{s_bees.png}
+          \end{figure}
         \end{frame}
       
       % subsubsection results (end)
 
       \subsubsection{Discussion} % (fold)
       \label{ssub:discussion}
-        \begin{frame}[t]\frametitle{Why are the bees selfish?}
+        \begin{frame}[c]\frametitle{Why are the bees selfish?}
             
           \begin{itemize}
             \item There is no substantial reason for them to cooperate.
@@ -147,16 +153,31 @@
       \label{ssub:results}
 
         \begin{frame}[t]\frametitle{The Only Difference is Hive Fitness}
+          \begin{figure}
+          \includegraphics[width=8cm]{hive_influenced_bees.png}
+          \end{figure}
         \end{frame}
 
         \begin{frame}[t]\frametitle{Nectar Reserves Over Time}
+          \begin{figure}
+          \includegraphics[width=8cm]{hive_influenced_bees_nectar.png}
+          \end{figure}
         \end{frame}
 
       % subsubsection results (end)
 
       \subsubsection{Discussion} % (fold)
       \label{ssub:discussion}
-        % TODO: Add discussion of these results
+
+        \begin{frame}[c]\frametitle{Why are the bees still selfish?}
+
+          \begin{itemize}
+            \item 0.005 is still better than 0.001
+            \item Insurance only works if there are a large number of people
+                  paying in
+          \end{itemize}
+        
+        \end{frame}
       % subsubsection discussion (end)
 
     % subsection hive_fitness (end)
@@ -164,7 +185,7 @@
     \subsection{Recurrent Experiment} % (fold)
     \label{sub:recurrent_experiment}
     
-      \begin{frame}[t]\frametitle{Rationale}
+      \begin{frame}[c]\frametitle{Rationale}
         \begin{itemize}
           \item Bees live more than one day, why shouldn't our simulated bees?
           \item Drawing inspiration from evolutionary game theory
@@ -176,19 +197,20 @@
 
       \subsubsection{Methods} % (fold)
       \label{ssub:methods}
-        \begin{frame}[t]\frametitle{NEAT Wiring}
+        \begin{frame}[c]\frametitle{NEAT Wiring}
             
           \begin{itemize}
             \item Bees live for a ``week''
             \item Each ``day'', they go out to find nectar
             \bigskip
-          \item Inputs each day:
+            \item Inputs each day:
             \begin{itemize}
                 \item Nectar found
                 \item Choice made on the previous day
                 \item Yesterday's fitness
                 \item Level of nectar in the hive (normalized)
             \end{itemize}
+            \item Fitness calculations then proceed as normal
           \end{itemize}
         
         \end{frame}
