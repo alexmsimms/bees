@@ -39,6 +39,7 @@
 
     \begin{frame}[c]\frametitle{Abstract}
       \begin{itemize}
+        \item Motivations: The Prisoner's Dilemna
         \item Attempting to investigate conditions for selfishness and altruism
               in a community of neural-net agents.
         \item Can we get co-operation from a large number of independent 
@@ -209,6 +210,12 @@
                 \item Choice made on the previous day
                 \item Yesterday's fitness
                 \item Level of nectar in the hive (normalized)
+
+
+                %  Do you have good results from these? If you don't, let's
+                %  not mention them for now -A
+                % \item Majority decision from the previous day
+                % \item Amount of nectar found on previous day
             \end{itemize}
             \item Fitness calculations then proceed as normal
           \end{itemize}
@@ -252,7 +259,17 @@
     
       \subsubsection{Methods} % (fold)
       \label{ssub:methods}
-        %TODO
+        \begin{frame}[c]\frametitle{Interbee Communication}
+         
+          \begin{itemize}
+            \item So far, bees do not have any direct iteraction with each 
+                  other.
+            \item Second output specifies whether or not the bee wants to
+                  direct the next bee to the same nectar source.
+            \item Nectar found by next bee depends on the last bee's decision
+                  AND the amount of nectar they had found on their turn
+          \end{itemize}
+        \end{frame}  
       % subsubsection methods (end)
 
       \subsubsection{Results} % (fold)
@@ -262,7 +279,14 @@
 
       \subsubsection{Discussion} % (fold)
       \label{ssub:discussion}
-        %TODO
+        \begin{frame}[c]\frametitle{Discussion}
+          \begin{itemize}
+            \item The guidance itself doesn't especially encourage bees to not
+                  make selfish decisions, but it does often prompt higher
+                  general hive fitness.
+            \item Selfish bees ``helping'' altruistic bees.
+          \end{itemize}
+        \end{frame}
       % subsubsection discussion (end)
 
     % subsection gossipping_bees (end)
@@ -272,7 +296,7 @@
   \section{General Discussion} % (fold)
   \label{sec:general_discussion}
   
-  \begin{frame}[t]\frametitle{Ravenna's initial thoughts}
+  \begin{frame}[c]\frametitle{Ravenna's initial thoughts}
     \begin{itemize}
       \item Hive fitness not only deducts fitness for hive-endangering bees,
             but also reduces the possible benefits of altruism
