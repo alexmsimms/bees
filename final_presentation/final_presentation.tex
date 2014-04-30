@@ -222,7 +222,7 @@
       \tableofcontents[currentsubsection, hideallsubsubsections]
       \end{frame}
     \setcounter{tocdepth}{3}
-
+ 
     \subsection{Recurrent Experiment} % (fold)
     \label{sub:recurrent_experiment}
     
@@ -324,12 +324,29 @@
       \label{ssub:results}
 
         \begin{frame}[c]\frametitle{Results}
-          \begin{figure}
-          \includegraphics[width=4cm]{gossip_bees.png}
-          \end{figure}
-          \begin{figure}
-          \includegraphics[width=4cm]{gossip_bees.
+          \begin{columns}
+          \begin{column}{0.48\textwidth}
+            \includegraphics[width=4cm]{results/gossip_bees.png}
+            \includegraphics[width=4cm]{results/gossip_bees_nectar.png}
+          \end{column}
+          \begin{column}{0.48\textwidth}
+            \includegraphics[width=4cm]{results/gossip_bees_bad.png}
+            \includegraphics[width=4cm]{results/gossip_bees_bad_nectar.png}
+          \end{column}
+          \end{columns}
         \end{frame}
+
+        \begin{frame}[c]\frametitle{Results}
+          \begin{columns}
+          \begin{column}{0.48\textwidth}
+            \includegraphics[width=6cm]{results/gossip_bees_guiding.png}
+          \end{column}
+          \begin{column}{0.48\textwidth}
+            \includegraphics[width=6cm]{results/gossip_bees_bad_guiding.png}
+          \end{column}
+          \end{columns}
+        \end{frame}
+
               
       % subsubsection results (end)
 
