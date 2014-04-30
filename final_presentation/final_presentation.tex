@@ -115,7 +115,7 @@
 
         \begin{frame}[t]\frametitle{Composition of the Hive Over Time}
           \begin{figure}
-          \includegraphics[width=8cm]{s_bees.png}
+          \includegraphics[width=8cm]{results/s_bees.png}
           \end{figure}
         \end{frame}
       
@@ -134,6 +134,13 @@
         \end{frame}
       % subsubsection discussion (end)
     % subsection basic_experiments (end)
+
+    \setcounter{tocdepth}{2}
+      \begin{frame}<beamer>
+      % \frametitle{Outline for section \thesection}
+      \tableofcontents[currentsubsection, hideallsubsubsections]
+      \end{frame}
+    \setcounter{tocdepth}{3}
 
     \subsection{Hive Fitness} % (fold)
     \label{sub:hive_fitness}
@@ -155,21 +162,16 @@
 
         \begin{frame}[t]\frametitle{The Only Difference is Hive Fitness}
           \begin{figure}
-          \includegraphics[width=8cm]{hive_influenced_bees.png}
+          \includegraphics[width=8cm]{results/hive_influenced_bees.png}
           \end{figure}
         \end{frame}
 
         \begin{frame}[t]\frametitle{Nectar Reserves Over Time}
           \begin{figure}
-          \includegraphics[width=8cm]{hive_influenced_bees_nectar.png}
+          \includegraphics[width=8cm]{results/hive_influenced_bees_nectar.png}
           \end{figure}
         \end{frame}
 
-        \begin{frame}[t]\frametitle{Directly Rewarded Altruism}
-          \begin{figure}
-          \includegraphics[width=8cm]{hive_influenced_bees_nectar.png}
-          \end{figure}
-        \end{frame}
 
       % subsubsection results (end)
 
@@ -188,7 +190,38 @@
         \end{frame}
       % subsubsection discussion (end)
 
+      \begin{frame}[cr]\frametitle{It is possible: Explicit Penalty}
+
+        \begin{columns}
+          \begin{column}{0.48\textwidth}
+          \includegraphics[width=6cm]{results/trivial_solution.png}
+            
+          \end{column}
+          \begin{column}{0.48\textwidth}
+            
+          \includegraphics[width=6cm]{results/trivial_solution_nectar.png}
+          \end{column}
+        \end{columns}
+      \end{frame}
+
+      \begin{frame}[c]\frametitle{It is possible: Less Explicit Penalty}
+        \begin{columns}
+        \begin{column}{0.48\textwidth}
+          \includegraphics[width=6cm]{results/selfish_modify.png}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+          \includegraphics[width=6cm]{results/selfish_modify_nectar.png}
+        \end{column}
+        \end{columns}
+      \end{frame}
     % subsection hive_fitness (end)
+
+    \setcounter{tocdepth}{2}
+      \begin{frame}<beamer>
+      % \frametitle{Outline for section \thesection}
+      \tableofcontents[currentsubsection, hideallsubsubsections]
+      \end{frame}
+    \setcounter{tocdepth}{3}
 
     \subsection{Recurrent Experiment} % (fold)
     \label{sub:recurrent_experiment}
@@ -234,13 +267,13 @@
       \label{ssub:results}
          \begin{frame}[t]\frametitle{Recurrent Bees?}
           \begin{figure}
-          \includegraphics[width=8cm]{recurrent_bees.png}
+          \includegraphics[width=8cm]{results/recurrent_bees.png}
           \end{figure}
         \end{frame}
 
         \begin{frame}[t]\frametitle{Nectar Reserves Over Time}
           \begin{figure}
-          \includegraphics[width=8cm]{recurrent_bees_nectar.png}
+          \includegraphics[width=8cm]{results/recurrent_bees_nectar.png}
           \end{figure}
         \end{frame}
       % subsubsection results (end)
@@ -260,6 +293,14 @@
       % subsubsection discussion (end)
 
     % subsection recurrent_experiment (end)
+
+    \setcounter{tocdepth}{2}
+    \begin{frame}<beamer>
+    % \frametitle{Outline for section \thesection}
+    \tableofcontents[currentsubsection, hideallsubsubsections]
+    \end{frame}
+    \setcounter{tocdepth}{3}
+
 
     \subsection{Gossiping Bees} % (fold)
     \label{sub:gossipping_bees}
