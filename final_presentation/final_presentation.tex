@@ -47,6 +47,19 @@
       \end{itemize}
     \end{frame}
 
+    \subsection{Hypothesis} % (fold)
+    \label{sub:hypothesis}
+
+      \begin{frame}[c]\frametitle{Hypothesis}
+          
+          The amount of altruism and selfishness demonstrated in NEAT-trained
+          agents will be most affected by an individual fitness relying
+          on overall group fitness.
+      
+      \end{frame}
+    
+    % subsection hypothesis (end)
+    
     \subsection{Model} % (fold)
     \label{sub:model}
       
@@ -54,6 +67,11 @@
         \begin{itemize}
           \item Many individual ``bees'' in a ``hive''.
           \item Each bee is an individual NEAT agent.
+          \item The hive has some ``nectar reserves''.
+          \item The nectar reserves are maintained by taking some nectar from the bees that brought 
+                  back nectar.
+          \item A penalty is assessed to the fitness of all bees if nectar 
+                  drops below a certain level.
         \end{itemize}
       \end{frame}
 
@@ -76,99 +94,119 @@
 
   \section{Experiments} % (fold)
   \label{sec:experiments}
-    \subsection{Hypothesis} % (fold)
-    \label{sub:hypothesis}
 
-      \begin{frame}[c]\frametitle{Hypothesis}
-          
-          The amount of altruism and selfishness demonstrated in NEAT-trained
-          agents will be most affected by an individual fitness relying
-          on overall group fitness.
-      
-      \end{frame}
+    % \subsection{Basic Experiments} % (fold)
+    % \label{sub:basic_experiments}
     
-    % subsection hypothesis (end)
-
-    \subsection{Basic Experiments} % (fold)
-    \label{sub:basic_experiments}
-    
-      \subsubsection{Methods} % (fold)
-      \label{ssub:methods}
+    %   \subsubsection{Methods} % (fold)
+    %   \label{ssub:methods}
       
-        \begin{frame}[c]\frametitle{Methods of the Basic Experiment}
-          Every ``day'' in the simulation:
-          \begin{itemize}
-            \item Each bee goes out to get ``nectar''
-            \item Has the decision to eat the nectar there, or bring it 
-                  back to the hive
-            \item At the hive, the nectar brought back by the bees is 
-                  shared equally between the bees that brought back nectar.
-            \end{itemize}
-            One ``day'' is one NEAT generation.
-            Generations: 100
-            Population: 
+    %     \begin{frame}[c]\frametitle{Methods of the Basic Experiment}
+    %       Every ``day'' in the simulation:
+    %       \begin{itemize}
+    %         \item Each bee goes out to get ``nectar''
+    %         \item Has the decision to eat the nectar there, or bring it 
+    %               back to the hive
+    %         \item At the hive, the nectar brought back by the bees is 
+    %               shared equally between the bees that brought back nectar.
+    %         \end{itemize}
+    %         One ``day'' is one NEAT generation.
+    %         % Generations: 100
+    %         % Population: 
         
-        \end{frame}
+    %     \end{frame}
 
-        \begin{frame}[t]\frametitle{NEAT Wiring}
+        % \begin{frame}[c]\frametitle{NEAT Wiring}
+        %   \begin{figure}
+        %   \includegraphics[width=8cm]{bee_diagrams/naive_sysem.png}
+        %   \end{figure}
+        % \end{frame}
+
+      % subsubsection methods (end)
+
+      % \subsubsection{Results} % (fold)
+      % \label{ssub:results}
+
+      %   \begin{frame}[t]\frametitle{Composition of the Hive Over Time}
+      %     \begin{figure}
+      %     \includegraphics[width=8cm]{results/s_bees.png}
+      %     \end{figure}
+      %   \end{frame}
+      
+      % % subsubsection results (end)
+
+      % \subsubsection{Discussion} % (fold)
+      % \label{ssub:discussion}
+      %   \begin{frame}[c]\frametitle{Why are the bees selfish?}
+            
+      %     \begin{itemize}
+      %       \item There is no substantial reason for them to cooperate.
+      %       \item Insurance is only effective if there are a large number of
+      %             people paying into it.
+      %     \end{itemize}
+        
+      %   \end{frame}
+      % subsubsection discussion (end)
+    % subsection basic_experiments (end)
+
+    \subsection{Trivial Case} % (fold)
+    \label{sub:trivial_case}
+    
+        \begin{frame}[c]\frametitle{NEAT Wiring}
+          \begin{figure}
+          \includegraphics[width=8cm]{bee_diagrams/naive_sysem.png}
+          \end{figure}
+        \end{frame}
+          \begin{frame}[cr]\frametitle{It is possible: Explicit Penalty}
+
+        \begin{columns}
+          \begin{column}{0.48\textwidth}
+          \includegraphics[width=6cm]{results/trivial_solution.png}
+            
+          \end{column}
+          \begin{column}{0.48\textwidth}
+            
+          \includegraphics[width=6cm]{results/trivial_solution_nectar.png}
+          \end{column}
+        \end{columns}
+      \end{frame}
+
+
+    % subsection trivial_case (end)
+
+    \subsection{Hive Fitness} % (fold)
+    \label{sub:hive_fitness}
+      
+      \setcounter{tocdepth}{2}
+        \begin{frame}<beamer>
+        % \frametitle{Outline for section \thesection}
+        \tableofcontents[currentsubsection, hideallsubsubsections]
+        \end{frame}
+      \setcounter{tocdepth}{3}
+
+      % \subsubsection{Methods} % (fold)
+      % \label{ssub:methods}
+      %   \begin{frame}{Added notion of ``Hive'' fitness}
+      %     \begin{itemize}
+      %       \item The hive has some ``nectar reserves''.
+      %       \item Maintained by taking some nectar from the bees that brought 
+      %             back nectar.
+      %       \item A penalty is assessed to the fitness of all bees if nectar 
+      %             drops below a certain level.
+      %     \end{itemize}
+      %   \end{frame}
+      % subsubsection methods (end)
+
+        \begin{frame}[c]\frametitle{Applied to Both Bees}
           \begin{figure}
           \includegraphics[width=8cm]{bee_diagrams/naive_sysem.png}
           \end{figure}
         \end{frame}
 
-      % subsubsection methods (end)
-
       \subsubsection{Results} % (fold)
       \label{ssub:results}
 
-        \begin{frame}[t]\frametitle{Composition of the Hive Over Time}
-          \begin{figure}
-          \includegraphics[width=8cm]{results/s_bees.png}
-          \end{figure}
-        \end{frame}
-      
-      % subsubsection results (end)
-
-      \subsubsection{Discussion} % (fold)
-      \label{ssub:discussion}
-        \begin{frame}[c]\frametitle{Why are the bees selfish?}
-            
-          \begin{itemize}
-            \item There is no substantial reason for them to cooperate.
-            \item Insurance is only effective if there are a large number of
-                  people paying into it.
-          \end{itemize}
-        
-        \end{frame}
-      % subsubsection discussion (end)
-    % subsection basic_experiments (end)
-
-    \setcounter{tocdepth}{2}
-      \begin{frame}<beamer>
-      % \frametitle{Outline for section \thesection}
-      \tableofcontents[currentsubsection, hideallsubsubsections]
-      \end{frame}
-    \setcounter{tocdepth}{3}
-
-    \subsection{Hive Fitness} % (fold)
-    \label{sub:hive_fitness}
-      \subsubsection{Methods} % (fold)
-      \label{ssub:methods}
-        \begin{frame}{Added notion of ``Hive'' fitness}
-          \begin{itemize}
-            \item The hive has some ``nectar reserves''.
-            \item Maintained by taking some nectar from the bees that brought 
-                  back nectar.
-            \item A penalty is assessed to the fitness of all bees if nectar 
-                  drops below a certain level.
-          \end{itemize}
-        \end{frame}
-      % subsubsection methods (end)
-
-      \subsubsection{Results} % (fold)
-      \label{ssub:results}
-
-        \begin{frame}[t]\frametitle{The Only Difference is Hive Fitness}
+        \begin{frame}[t]\frametitle{Hive Fitness}
           \begin{figure}
           \includegraphics[width=8cm]{results/hive_influenced_bees.png}
           \end{figure}
@@ -198,21 +236,7 @@
         \end{frame}
       % subsubsection discussion (end)
 
-      \begin{frame}[cr]\frametitle{It is possible: Explicit Penalty}
-
-        \begin{columns}
-          \begin{column}{0.48\textwidth}
-          \includegraphics[width=6cm]{results/trivial_solution.png}
-            
-          \end{column}
-          \begin{column}{0.48\textwidth}
-            
-          \includegraphics[width=6cm]{results/trivial_solution_nectar.png}
-          \end{column}
-        \end{columns}
-      \end{frame}
-
-      \begin{frame}[c]\frametitle{It is possible: Less Explicit Penalty}
+      \begin{frame}[c]\frametitle{It is possible: Apply to only one bee}
         \begin{columns}
         \begin{column}{0.48\textwidth}
           \includegraphics[width=6cm]{results/selfish_modify.png}
@@ -222,17 +246,18 @@
         \end{column}
         \end{columns}
       \end{frame}
+
     % subsection hive_fitness (end)
 
-    \setcounter{tocdepth}{2}
-      \begin{frame}<beamer>
-      % \frametitle{Outline for section \thesection}
-      \tableofcontents[currentsubsection, hideallsubsubsections]
-      \end{frame}
-    \setcounter{tocdepth}{3}
  
     \subsection{Recurrent Experiment} % (fold)
     \label{sub:recurrent_experiment}
+      \setcounter{tocdepth}{2}
+        \begin{frame}<beamer>
+        % \frametitle{Outline for section \thesection}
+        \tableofcontents[currentsubsection, hideallsubsubsections]
+        \end{frame}
+      \setcounter{tocdepth}{3}
     
       \begin{frame}[c]\frametitle{Rationale}
         \begin{itemize}
@@ -249,26 +274,14 @@
         \begin{frame}[c]\frametitle{NEAT Wiring}
             
           \begin{itemize}
-            \item Bees live for a ``week'' (7 days)
+            \item Bees live for a ``week'' %(7 days)
             \item Each ``day'', they go out to find nectar
-            \bigskip
-            \item Inputs each day:
-            \begin{itemize}
-                \item Nectar found
-                \item Choice made on the previous day
-                \item Yesterday's fitness
-                \item Level of nectar in the hive (normalized)
-                %  Do you have good results from these? If you don't, let's
-                %  not mention them for now -A
-                % \item Majority decision from the previous day
-                % \item Amount of nectar found on previous day
-            \end{itemize}
+            \item In addition to the nectar they find, they also have a number of recurrent inputs
             \item Fitness calculations then proceed as normal
-
           \end{itemize}
         
         \end{frame}
-        \begin{frame}[t]\frametitle{NEAT Wiring}
+        \begin{frame}[c]\frametitle{NEAT Wiring}
           \begin{figure}
           \includegraphics[width=8cm]{bee_diagrams/recurrent_system.png}
           \end{figure}
@@ -306,16 +319,17 @@
 
     % subsection recurrent_experiment (end)
 
-    \setcounter{tocdepth}{2}
-    \begin{frame}<beamer>
-    % \frametitle{Outline for section \thesection}
-    \tableofcontents[currentsubsection, hideallsubsubsections]
-    \end{frame}
-    \setcounter{tocdepth}{3}
 
 
     \subsection{Gossiping Bees} % (fold)
     \label{sub:gossipping_bees}
+  
+      \setcounter{tocdepth}{2}
+      \begin{frame}<beamer>
+      % \frametitle{Outline for section \thesection}
+      \tableofcontents[currentsubsection, hideallsubsubsections]
+      \end{frame}
+      \setcounter{tocdepth}{3}
     
       \subsubsection{Methods} % (fold)
       \label{ssub:methods}
@@ -332,7 +346,7 @@
         \end{frame}  
 
 
-        \begin{frame}[t]\frametitle{NEAT Wiring}
+        \begin{frame}[c]\frametitle{NEAT Wiring}
           \begin{figure}
           \includegraphics[width=8cm]{bee_diagrams/gossip_system.png}
           \end{figure}
@@ -347,12 +361,13 @@
         \begin{frame}[c]\frametitle{Results}
           \begin{columns}
           \begin{column}{0.48\textwidth}
-            \includegraphics[width=4cm]{results/gossip_bees.png}
-            \includegraphics[width=4cm]{results/gossip_bees_nectar.png}
+            \includegraphics[width=6cm]{results/gossip_bees.png}
           \end{column}
+        
           \begin{column}{0.48\textwidth}
-            \includegraphics[width=4cm]{results/gossip_bees_bad.png}
-            \includegraphics[width=4cm]{results/gossip_bees_bad_nectar.png}
+            \includegraphics[width=6cm]{results/gossip_bees_guiding1.png}
+            % \includegraphics[width=4cm]{results/gossip_bees_bad.png}
+            % \includegraphics[width=4cm]{results/gossip_bees_bad_nectar.png}
           \end{column}
           \end{columns}
         \end{frame}
@@ -360,10 +375,10 @@
         \begin{frame}[c]\frametitle{Results}
           \begin{columns}
           \begin{column}{0.48\textwidth}
-            \includegraphics[width=6cm]{results/gossip_bees_guiding.png}
+            \includegraphics[width=6cm]{results/gossip_bees_nectar.png}
           \end{column}
           \begin{column}{0.48\textwidth}
-            \includegraphics[width=6cm]{results/gossip_bees_bad_guiding.png}
+            \includegraphics[width=6cm]{results/gossip_bees_found_nectar.png}
           \end{column}
           \end{columns}
         \end{frame}
@@ -383,6 +398,7 @@
                   \item OR Guided bees realizing the above-average amount of 
                         found nectar is more beneficial to them if they are 
                         selfish.
+                \end{itemize}
           \end{itemize}
         \end{frame}
       % subsubsection discussion (end)
@@ -394,13 +410,13 @@
   \section{General Discussion} % (fold)
   \label{sec:general_discussion}
   
-  \begin{frame}[c]\frametitle{Observations and Conclusions}
-    \begin{itemize}
-      \item Hive fitness not only deducts fitness for hive-endangering bees,
-            but also reduces the possible benefits of altruism
-      \item Selfishness will initially always be the ``better'' option
-    \end{itemize}
-  \end{frame}
+  % \begin{frame}[c]\frametitle{Observations and Conclusions}
+  %   \begin{itemize}
+  %     \item Hive fitness not only deducts fitness for hive-endangering bees,
+  %           but also reduces the possible benefits of altruism
+  %     \item Selfishness will initially always be the ``better'' option due
+  %   \end{itemize}
+  % \end{frame}
 
   % section general_discussion (end)
 
@@ -408,11 +424,12 @@
     \begin{itemize}
       \item Unless explicity rewarded for doing so, artificial agents will not
             exhibit cooperation/altruism in a community.
-      \item However, agents can learn to behave balance selfishness with
-            altruism if only to briefly combat negative effects of selfishness.
+      \item However, agents can learn to balance selfishness with
+            altruism, if only to briefly combat negative effects of selfishness.
       \item Agents prefer a selfish nature even when fitness is negligible 
             rather than chance an action whose fitness relies on others.
-
+      \end{itemize}
+  \end{frame}
   \section{Q \& A} % (fold)
   \label{sec:q_and_a}
     \begin{frame}{Questions?}
