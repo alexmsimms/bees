@@ -120,17 +120,33 @@
 
 			In this experiment, the bees still behaved overwhelmingly selfishly, for largely the same reasons as in the basic experiment. Although the hive fitness mechanic was added, the bees have no way of determining what the hive fitness currently is, and therefore have no way to adjust their actions to be altruistic or selfish, depending on the current state of the hive. Because of this, they continue to default to the same behavior of selfishness, because they are unaware of this new restriction on their behavior. Furthermore. because the same fitness modifier is applied to both the selfish bees and to the altruistic bees, the selfish bees have a similar advantage: 0.000007 is still better than 0.0001.
 
-			Subsequent experiments were run as a proof of concept, in which the fitness adjustment was only made to the selfish bees, and in which the selfish bees were all assigned 0 fitness. While these produced results in which the bees all wound up altruistic, further reporting on them is outside of the scope of this paper, which is attempting to get altruism without specifically encoding for it.
+			Subsequent experiments were run as a proof of concept, in which the fitness adjustment was only made to the selfish bees, and in which the selfish bees were all assigned a fitness value of 0. While these produced results in which the bees all wound up altruistic, further reporting on them is outside of the scope of this paper, which is attempting to get altruism without specifically encoding for it.
 
 		% subsection hive_fitness (end)
 
 		\subsection{Recurrent Networks} % (fold)
 		\label{sub:recurrent_networks}
-		% \lipsum[12-14]
+
+			\begin{figure}[tb]
+				\begin{center}
+					\includegraphics[scale=.5]{bee_diagrams/recurrent_system.png}
+				\end{center}
+				\caption{In addition to the nectar found, the networks now include THING, THING, and THING.}
+				\label{fig:recurrent_system}
+			\end{figure}
+
 		% subsection recurrent_networks (end)
 
 		\subsection{Advice from Bees} % (fold)
 		\label{sub:advice_from_bees}
+			\begin{figure}[tb]
+				\begin{center}
+					\includegraphics[scale=.5]{bee_diagrams/gossip_system.png}
+				\end{center}
+				\caption{In addition to the nectar found, the networks now include THING, THING, and THING.}
+				\label{fig:gossip_system}
+			\end{figure}
+
 			%%RAVENNA DO THIS THING PLEASE
 		% subsection advice_from_bees (end)
 
@@ -141,6 +157,9 @@
 		One substantial difficulty for the development of altruism comes from the way that the fitness function is implemented. Rll of the bees coming back are coming back with nectar in the range of 0 and 1, so amortized, choosing to be altruistic is choosing a fitness of $0.5$.Choosing to be selfish has the potential to obtain much higher
 		fitnesses than that, and those individuals will be able to reproduce.
 	% section discussion (end)
+
+	%%%%%%%%%%%%%%%%%%% HERE THERE BE APPENDICES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 	% \singlespacing
 	% \appendix
 	% \pagebreak
