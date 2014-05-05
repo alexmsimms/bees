@@ -1,7 +1,12 @@
-\documentclass{article}
+\documentclass[11pt]{article}
+
 \usepackage[doublespacing]{setspace}
 % \usepackage[margin=1in]{geometry}
+
 \usepackage{lipsum}
+\usepackage{cite}
+\usepackage{graphicx}
+
 
 \title  {``Bees?''\\ A Large Scale, Co-operative Simulation 
          Weighing Altruism and Selfishness}
@@ -31,9 +36,25 @@
 		% A detailed description of your experiments. 
 		% There should be enough information provided so that someone could 
 		% reproduce your experiments. 
+
+		\subsection{The Bee Model} % (fold)
+		\label{sub:the_bee_model}
+			To conduct these experiments, a model was developed that takes inspiration from the nectar-collecting hive insect, known in some circles as the bee. Our model consists of a population of individual neural nets, evolving by the NeuroEvolution of Adapting Topologies algorithm, henceforth referred to as NEAT.\cite{neat} NEAT, first developed by the illustrious Kenneth Stanley, is a genetic algorithm that has a flexible genetic encoding that allows for the topology of the network to grow and change over time, based on a user-defined measure of ``fitness''. All of the genes within the genetic encoding are tagged with historical markings, which allows for quick implementation of ``crossing-over,'' the process by which genetic information from an individual's parents is mixed. Finally, NEAT allows for speciation: individuals within the population are grouped together based on the similarness of their genomes, and only those individuals with similar genomes are allowed to reproduce. This allows for each species to find its own niche, and prevents any one species from outcompeting all of the others. It is because of these features that NEAT was selected for this task.
+
+			Each individual NEAT agent within this model is called a ``bee'', and the population of all of the NEAT agents is called the ``hive''. Each ``day'' within this model, all of the bees leave the hive to go and find nectar. The nectar is represented in this model as a random floating-point number between 0 and 1. When it recieves this nectar, it has the choice to either be selfish or altruistic. If the bee decides to be selfish, it eats the nectar then and there. If it decides to be altruistic, it brings the nectar back to the hive, where all of the nectar brought back by altruistic bees is pooled and shared equally among all of the altruistic bees. The ``fitness'' in this system is simply how much nectar a bee was able to eat on a given day.
+		% subsection the_bee_model (end)
+
 		\subsection{Basic Experiment} % (fold)
 		\label{sub:basic_experiment}
-		\lipsum[8-10]
+			An experiment was carried out to determine the workability of the model. 
+
+			\begin{figure}[tb]
+				\begin{center}
+					\includegraphics[scale=.5]{bee_diagrams/naive_system.png}
+				\end{center}
+				\caption{}
+				\label{fig:naive_system}
+			\end{figure}
 		% subsection basic_experiment (end)
 
 		\subsection{Hive Fitness} % (fold)
@@ -45,6 +66,11 @@
 		\label{sub:recurrent_networks}
 		\lipsum[12-14]
 		% subsection recurrent_networks (end)
+
+		\subsection{Advice from Bees} % (fold)
+		\label{sub:advice_from_bees}
+		
+		% subsection advice_from_bees (end)
 
 	% section experiments (end)
 
@@ -195,4 +221,9 @@
 			\end{verbatim}
 		% subsection configuration_for_recurrent_networks (end)
 	% section neat_configurations (end)
+
+	\nocite{*}
+	\bibliography{bib}
+	\bibliographystyle{plain}
+
 \end{document}
