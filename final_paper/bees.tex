@@ -45,7 +45,7 @@
 
 		\subsection{Basic Experiment} % (fold)
 		\label{sub:basic_experiment}
-			An experiment was carried out to determine the workability of the model. In this experiment, each bee lived for only one day, and afterwards died. Their fitnesses determined the makeup of the next generation of bees: the most fit bees were bred to produce hopefully more fit offspring.
+			An experiment was carried out to determine the workability of the model. In this experiment, each bee lived for only one day, and afterwards died. Their fitnesses determined the makeup of the next generation of bees: the most fit bees were bred to produce hopefully more fit offspring. The NEAT network evolved with the settings described in Appendix \ref{sub:configuration_for_basic_experiment}. Its only input was the nectar it found, again, a float between 0 and 1, and output represented the choice it made. (See Figure \ref{fig:naive_system}.)
 
 			\begin{figure}[tb]
 				\begin{center}
@@ -57,11 +57,22 @@
 
 			\begin{figure}[tb]
 				\begin{center}
-					\includegraphics[scale=.75]{results/basic_comp.png}
+					\includegraphics[scale=.5]{results/basic_comp.png}
 				\end{center}
 				\caption{Under the conditions of the basic experiment, altruism lost handily to selfishness.}
-				\label{fig:figure1}
+				\label{fig:basic_experiment_composition}
 			\end{figure}
+
+			In all of the trials run, the majority of the bees wound up selfish. A representative trial is shown in Figure \ref{fig:basic_experiment_composition}. There are a number of reasons for this, the most pressing being the fact that the bees had no direct incentive to act altruistically. While more stable fitnesses could theoretically be obtained through altruism, the system only works if a all of the bees are acting altruistically: enough bees will bring back above-average amoutns of nectar to offset the bees that bring back a below-average aomunt of nectar. However, if too few bees are acting altsuistically, then this buffering effect is not present. 
+
+			%% I think i discovered a substantial flaw in the experiment:
+			%% Amortized, choosing to be altruistic is choosing a fitness of 0.5
+			%% Choosing to be selfish has the potential to obtain much higher
+			%% fitnesses than that, and those individuals will be able to reproduce.
+
+			%% FUCK.
+
+
 		% subsection basic_experiment (end)
 
 		\subsection{Hive Fitness} % (fold)
