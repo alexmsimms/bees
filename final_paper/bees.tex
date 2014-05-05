@@ -30,16 +30,12 @@
 		% Find and read at least three articles related to your experiment and 
 		% discuss these papers here. 
 		
-		Cooperative behavior has frequently been discussed within the contexts of artificial intelligence. The Prisoner's Dilemna itself often serves as a basis for these discussions due to its relevance to issues of social order and the challenges thereof. Michael W. Macy's paper on ``Social Order in Artificial Worlds'' describes the Prisoner's Dilemna as the ``paradox of social order''. \cite{macy} Macy specifically names four possible outcomes in the Prisoner's Dilemna, ordered by the amount of payoff: temptation (defecting while the other prisoner remains silent), reward (both prisoners staying silent), punishment (both prisoners defect), and sucker (staying silent while the other prisoner betrays you). The reason why this game can be called a paradox is that the choice leading to the highest payoff (selfishness) also has the potential for the greatest failure. Since our experiments take place not on an individual-to-individual level but rather in a large hive-type colony, our experiments don't explicitly use the Prisoner's Dilemna. However, each agent has a similar choice of selfishness or altruism with similar ordered outcomes, only on a larger communal scale:
-		\begin{itemize}
-			\item Temptation: selfish agents receive a random (potentially above average) fitness
-			\item Reward: altruistic agents receive an average fitness
-			\item Punishment: enough agents are selfish that hive fitness drops for all
-			\item Sucker: a minority of agents behave altruistically while a majority behave selfishly, reducing hive fitness for all
-			Unlike the true Prisoner's Dilemna, instead of temptation/sucker and reward/punishment being linked, our experiment has temptation/reward and punishment/sucker linked. Also, punishment and sucker potentially receive the same amount of low payoff. This could supposedly lower the potential for selfishness since acting altruistically no longer possibly leads to a worse ending than acting selfishly.
-		\end{itemize}
-		As mentioned by Macy, the single-iteration Prisoner's Dilemna is best played with a selfish dominant strategy, according to game theory. Our experiments show the same, for reasons discussed later. However, this strategy is not the best when the Prisoner's Dilemna is repeated, as expanded upon in David B. Fogel's ``Evolving Behaviors in the Iterated Prisoner's Dilemna'' \cite{fogel}. A recurrent Prisoner's Dilemna is often effective because players will learn over time which individuals are more likely to defect or cooperate, and adjust their strategies accordingly when facing each of those individuals. However, in a hive environment where many independent agents are making the decision simultaneously, this is not a viable option to learn. Instead, the value of implementing a recurrent network in our experiments comes from the knowledge of the previous iteration, potentially informing the 
 
+		Cooperative behavior has frequently been discussed within the contexts of artificial intelligence. The Prisoner's Dilemna itself often serves as a basis for these discussions due to its relevance to issues of social order and the challenges thereof. Michael W. Macy's paper on ``Social Order in Artificial Worlds'' describes the Prisoner's Dilemna as the ``paradox of social order''. \cite{macy} Macy specifically names four possible outcomes in the Prisoner's Dilemna, ordered by the amount of payoff: temptation (defecting while the other prisoner remains silent), reward (both prisoners staying silent), punishment (both prisoners defect), and sucker (staying silent while the other prisoner betrays you). The reason why this game can be called a paradox is that the choice leading to the highest payoff (selfishness) also has the potential for the greatest failure. Since our experiments take place not on an individual-to-individual level but rather in a large hive-type colony, our experiments don't explicitly use the Prisoner's Dilemna. However, each agent has a similar choice of selfishness or altruism with somewhat similar outcomes, only on a larger communal scale. It should be noted that we do also differ from the Prisoner's Dilemna in one other significant way: our experiments focus not on how selfishness in one agent causes suffering in another, but rather how selfishness negatively impacts the entire community overall, including the selfish individuals themselves.
+
+		As mentioned by Macy, the single-iteration Prisoner's Dilemna is best played with a selfish dominant strategy, according to game theory. Our experiments show the same, for reasons discussed later. However, this strategy is not the best when the Prisoner's Dilemna is repeated, as expanded upon in David B. Fogel's ``Evolving Behaviors in the Iterated Prisoner's Dilemna'' \cite{fogel}. As in our experiment, Fogel explicitly evolved best strategies over many different simulations of the scenario. A recurrent Prisoner's Dilemna is often effective because players will learn over time which individuals are more likely to defect or cooperate, and adjust their strategies accordingly when facing each of those individuals. However, in a hive environment where many independent agents are making the decision simultaneously, this is not a viable option to learn. Instead, for some of our experiments, recurrent networks are used to provide each generation of agents with several rounds of simulations and information from each one in order to learn general trends of the hive.
+
+		Finally, Sarit Kraus' ``Negotiation and cooperation in multi-agent environments'' discusses the possibilities of acheiving cooperation in a shared environment like the hive simulation set up for this experiment \cite{kraus}. One such strategy discussed suggests that in situations where resources must be shared, a communication system may benefit self-motivated agents. Along a similar line of thinking, the last experiment of this paper (Advice System) implements a system in which agents have the opportunity of increasing overall hive resources by communicating where more resources can be found. Kraus also names coalition formation as a method of increasing benefits across the board for self-motivated agents. 
 
 
 	% section introduction (end)
@@ -77,7 +73,7 @@
 				\label{fig:basic_experiment_composition}
 			\end{figure}
 
-			In all of the trials run, the majority of the bees wound up selfish. A representative trial is shown in Figure \ref{fig:basic_experiment_composition}. There are a number of reasons for this, the most pressing being the fact that the bees had no direct incentive to act altruistically. While more stable fitnesses could theoretically be obtained through altruism, the system only works if a all of the bees are acting altruistically: enough bees will bring back above-average amoutns of nectar to offset the bees that bring back a below-average aomunt of nectar. However, if too few bees are acting altsuistically, then this buffering effect is not present. 
+			In all of the trials run, the majority of the bees wound up selfish. A representative trial is shown in Figure \ref{fig:basic_experiment_composition}. There are a number of reasons for this, the most pressing being the fact that the bees had no direct incentive to act altruistically. While more stable fitnesses could theoretically be obtained through altruism, the system only works if a all of the bees are acting altruistically: enough bees will bring back above-average amoutns of nectar to offset the bees that bring back a below-average aomunt of nectar. However, if too few bees are acting altruistically, then this buffering effect is not present. 
 
 
 		% subsection basic_experiment (end)
@@ -156,6 +152,16 @@
 	\label{sec:discussion}
 		One substantial difficulty for the development of altruism comes from the way that the fitness function is implemented. Rll of the bees coming back are coming back with nectar in the range of 0 and 1, so amortized, choosing to be altruistic is choosing a fitness of $0.5$.Choosing to be selfish has the potential to obtain much higher
 		fitnesses than that, and those individuals will be able to reproduce.
+
+		%for comparison to Macy
+		\begin{itemize}
+		\item Temptation: selfish agents receive a random (potentially above average) fitness
+		\item Reward: altruistic agents receive an average fitness
+		\item Punishment: enough agents are selfish that hive fitness drops for all
+		\item Sucker: a minority of agents behave altruistically while a majority behave selfishly, reducing hive fitness for all
+		\end{itemize}
+		Unlike the true Prisoner's Dilemna, instead of temptation/sucker and reward/punishment being linked, our experiment has temptation/reward and punishment/sucker linked. Also, punishment and sucker potentially receive the same amount of low payoff. This could supposedly lower the potential for selfishness since acting altruistically no longer possibly leads to a worse ending than acting selfishly.
+
 	% section discussion (end)
 
 	%%%%%%%%%%%%%%%%%%% HERE THERE BE APPENDICES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
