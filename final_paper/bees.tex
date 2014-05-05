@@ -3,6 +3,7 @@
 \usepackage[doublespacing]{setspace}
 % \usepackage[margin=1in]{geometry}
 
+\usepackage{fancyvrb}
 \usepackage{lipsum}
 \usepackage{cite}
 \usepackage{graphicx}
@@ -19,6 +20,7 @@
 		% A short abstract of 200 to 300 words summarizing your findings. 
 
 		The Prisoner’s Dilemma, in philosophy, is a hypothetical situation that tests human nature. Two criminals are imprisoned. If, however, one prisoner should choose to defect and betray the other, he will be set free and the betrayed prisoner will receive 3 years of prison. If, on the other hand, they simultaneously betray each other, both will receive a 2 year sentence. Cooperative silence from both parties gets them both a lesser sentence of 1 year. Although a human may argue that altruism is the best option for both parties, game theory states that in this situation, one should always choose to betray in order to minimize personal loss, and indeed one would expect this kind of decision from an artificial agent. Yet plenty of communities exist in nature that revolve around altruistic cooperation- for example, a bee colony, where individual bees retrieve nectar for the communal hive rather than scouting selfishly for their own survival. Although cooperation can certainly be implemented into an artificial life simulation, from an evolutionary standpoint a more interesting question is raised: can the interactions of a group and the parameters of their environment produce emergent cooperation among independent agents? This research aims to investigate the possibility of emergent altruism through evolutionary game theory. To this effect, we used NEAT to evolve neural-net topologies across many generations in a bee colony simulation, testing what possible circumstances might lead to altruistic decisions or selfish decisions in the hive. Initial speculation produced a hypothesis that the amount of altruism and selfishness demonstrated in NEAT-trained agents will be most affected by an individual fitness relying on group fitness. However, the results of our experiments demonstrate that while this is partly true and group fitness is key to altering artificial behavior, in the end selfishness wins out.
+
 
 	\end{abstract}
 
@@ -78,12 +80,43 @@
 			In all of the trials run, the majority of the bees wound up selfish. A representative trial is shown in Figure \ref{fig:basic_experiment_composition}. There are a number of reasons for this, the most pressing being the fact that the bees had no direct incentive to act altruistically. While more stable fitnesses could theoretically be obtained through altruism, the system only works if a all of the bees are acting altruistically: enough bees will bring back above-average amoutns of nectar to offset the bees that bring back a below-average aomunt of nectar. However, if too few bees are acting altsuistically, then this buffering effect is not present. 
 
 
-
 		% subsection basic_experiment (end)
 
 		\subsection{Hive Fitness} % (fold)
 		\label{sub:hive_fitness}
-		\lipsum[10-12]
+			How, then, can this selfishness be subverted? Well, in the real world, actual hives collect the nectar that the bees bring in, and convert it in to honey. This is the inspiration for a measure of ``hive fitness,'' which we have implemented as an integer between 0 and 10, indicating how much nectar the hive has on ``reserve''. Each day, when the altruistic bees bring the honey back, a tenth of the honey is taken from them and put into the hive, to support the ``queen,'' who eats 0.5 units of nectar per day. The amount of nectar in the reserve is turned into a modifier as described in Figure \ref{fig:modifier_algorithm}, which is then multiplied by the amount of nectar each bee finds to determine their fitness.
+
+			\begin{figure}[tb]
+				%% HERE THERE BE DRAGONS:
+				%% The verbatim environment is indented with spaces because
+				%% the Verbatim environment is stupid.
+				\begin{Verbatim}[frame=single]
+                if hive_nectar > 10:
+                    modifier = 1
+                elif hive_nectar > 0:
+                    modifier = hive_nectar / 10
+                else:
+                    modifier = .00001 
+				\end{Verbatim}
+				\caption{The fitness of each bee is affected by the amount of nectar reserves in the hive. The modifier defined by this section of code is multiplied by the amount of nectar the bee collected in order to determine that bee's fitness.}
+				\label{fig:modifier_algorithm}
+			\end{figure}
+
+			\begin{figure}[tb]
+				\begin{center}
+					\includegraphics[scale=.5]{results/hive_fitness_comp.png}
+				\end{center}
+				\caption{OH GOD}
+				\label{fig:figure1}
+			\end{figure}
+
+			\begin{figure}[tb]
+				\begin{center}
+					\includegraphics[scale=.5]{results/hive_fitness_res.png}
+				\end{center}
+				\caption{Caption here}
+				\label{fig:figure1}
+			\end{figure}
 		% subsection hive_fitness (end)
 
 		\subsection{Recurrent Networks} % (fold)
@@ -100,7 +133,8 @@
 
 	\section{Discussion} % (fold)
 	\label{sec:discussion}
-	\lipsum[14-20]
+		One substantial difficulty for the development of altruism comes from the way that the fitness function is implemented. Rll of the bees coming back are coming back with nectar in the range of 0 and 1, so amortized, choosing to be altruistic is choosing a fitness of $0.5$.Choosing to be selfish has the potential to obtain much higher
+		fitnesses than that, and those individuals will be able to reproduce.
 	% section discussion (end)
 	\singlespacing
 	\appendix
