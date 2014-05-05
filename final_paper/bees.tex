@@ -4,7 +4,7 @@
 \usepackage[margin=1in]{geometry}
 
 \usepackage{fancyvrb}
-\usepackage{lipsum}
+% \usepackage{lipsum}
 \usepackage{cite}
 \usepackage{graphicx}
 
@@ -30,6 +30,7 @@
 		% Find and read at least three articles related to your experiment and 
 		% discuss these papers here. 
 		
+
 		Cooperative behavior has frequently been discussed within the contexts of artificial intelligence. The Prisoner's Dilemna itself often serves as a basis for these discussions due to its relevance to issues of social order and the challenges thereof. Michael W. Macy's paper on ``Social Order in Artificial Worlds'' describes the Prisoner's Dilemna as the ``paradox of social order''. \cite{macy} Macy specifically names four possible outcomes in the Prisoner's Dilemna, ordered by the amount of payoff: temptation (defecting while the other prisoner remains silent), reward (both prisoners staying silent), punishment (both prisoners defect), and sucker (staying silent while the other prisoner betrays you). The reason why this game can be called a paradox is that the choice leading to the highest payoff (selfishness) also has the potential for the greatest failure. Since our experiments take place not on an individual-to-individual level but rather in a large hive-type colony, our experiments don't explicitly use the Prisoner's Dilemna. However, each agent has a similar choice of selfishness or altruism with somewhat similar outcomes, only on a larger communal scale. It should be noted that we do also differ from the Prisoner's Dilemna in one other significant way: our experiments focus not on how selfishness in one agent causes suffering in another, but rather how selfishness negatively impacts the entire community overall, including the selfish individuals themselves.
 
 		As mentioned by Macy, the single-iteration Prisoner's Dilemna is best played with a selfish dominant strategy, according to game theory. Our experiments show the same, for reasons discussed later. However, this strategy is not the best when the Prisoner's Dilemna is repeated, as expanded upon in David B. Fogel's ``Evolving Behaviors in the Iterated Prisoner's Dilemna'' \cite{fogel}. As in our experiment, Fogel explicitly evolved best strategies over many different simulations of the scenario. A recurrent Prisoner's Dilemna is often effective because players will learn over time which individuals are more likely to defect or cooperate, and adjust their strategies accordingly when facing each of those individuals. However, in a hive environment where many independent agents are making the decision simultaneously, this is not a viable option to learn. Instead, for some of our experiments, recurrent networks are used to provide each generation of agents with several rounds of simulations and information from each one in order to learn general trends of the hive.
@@ -102,26 +103,31 @@
 					\includegraphics[scale=.5]{results/hive_fitness_comp.png}
 				\end{center}
 				\caption{OH GOD}
-				\label{fig:figure1}
+				\label{fig:hive_fitness_composition}
 			\end{figure}
 
 			\begin{figure}[tb]
 				\begin{center}
 					\includegraphics[scale=.5]{results/hive_fitness_res.png}
 				\end{center}
-				\caption{Caption here}
-				\label{fig:figure1}
+				\caption{oh no bees}
+				\label{fig:hive_fitness_reserves}
 			\end{figure}
+
+			In this experiment, the bees still behaved overwhelmingly selfishly, for largely the same reasons as in the basic experiment. Although the hive fitness mechanic was added, the bees have no way of determining what the hive fitness currently is, and therefore have no way to adjust their actions to be altruistic or selfish, depending on the current state of the hive. Because of this, they continue to default to the same behavior of selfishness, because they are unaware of this new restriction on their behavior. Furthermore. because the same fitness modifier is applied to both the selfish bees and to the altruistic bees, the selfish bees have a similar advantage: 0.000007 is still better than 0.0001.
+
+			Subsequent experiments were run as a proof of concept, in which the fitness adjustment was only made to the selfish bees, and in which the selfish bees were all assigned 0 fitness. While these produced results in which the bees all wound up altruistic, further reporting on them is outside of the scope of this paper, which is attempting to get altruism without specifically encoding for it.
+
 		% subsection hive_fitness (end)
 
 		\subsection{Recurrent Networks} % (fold)
 		\label{sub:recurrent_networks}
-		\lipsum[12-14]
+		% \lipsum[12-14]
 		% subsection recurrent_networks (end)
 
 		\subsection{Advice from Bees} % (fold)
 		\label{sub:advice_from_bees}
-		
+			%%RAVENNA DO THIS THING PLEASE
 		% subsection advice_from_bees (end)
 
 	% section experiments (end)
@@ -141,147 +147,147 @@
 		Unlike the true Prisoner's Dilemna, instead of temptation/sucker and reward/punishment being linked, our experiment has temptation/reward and punishment/sucker linked. Also, punishment and sucker potentially receive the same amount of low payoff. This could supposedly lower the potential for selfishness since acting altruistically no longer possibly leads to a worse ending than acting selfishly.
 
 	% section discussion (end)
-	\singlespacing
-	\appendix
-	\pagebreak
-	\section{NEAT Configurations} % (fold)
-	\label{sec:neat_configurations}
+	% \singlespacing
+	% \appendix
+	% \pagebreak
+	% \section{NEAT Configurations} % (fold)
+	% \label{sec:neat_configurations}
 	
-		\subsection{Configuration for Basic Experiment} % (fold)
-		\label{sub:configuration_for_basic_experiment}
-			\begin{verbatim}
-				[phenotype]
-				input_nodes         = 1
-				output_nodes        = 1
-				max_weight          = 30
-				min_weight          = -30
-				feedforward         = 0
-				nn_activation       = tanh 
-				hidden_nodes        = 0
-				weight_stdev        = 0.9
+	% 	\subsection{Configuration for Basic Experiment} % (fold)
+	% 	\label{sub:configuration_for_basic_experiment}
+	% 		\begin{verbatim}
+	% 			[phenotype]
+	% 			input_nodes         = 1
+	% 			output_nodes        = 1
+	% 			max_weight          = 30
+	% 			min_weight          = -30
+	% 			feedforward         = 0
+	% 			nn_activation       = tanh 
+	% 			hidden_nodes        = 0
+	% 			weight_stdev        = 0.9
 
-				[genetic]
-				pop_size              = 50
-				max_fitness_threshold = 1
+	% 			[genetic]
+	% 			pop_size              = 50
+	% 			max_fitness_threshold = 1
 
-				# Human reasoning
-				prob_addconn          = 0.05
-				prob_addnode          = 0.03
-				prob_mutatebias       = 0.2
-				bias_mutation_power   = 0.5
-				prob_mutate_weight    = 0.9
-				weight_mutation_power = 1.5
-				prob_togglelink       = 0.01
-				elitism               = 1
+	% 			# Human reasoning
+	% 			prob_addconn          = 0.05
+	% 			prob_addnode          = 0.03
+	% 			prob_mutatebias       = 0.2
+	% 			bias_mutation_power   = 0.5
+	% 			prob_mutate_weight    = 0.9
+	% 			weight_mutation_power = 1.5
+	% 			prob_togglelink       = 0.01
+	% 			elitism               = 1
 
-				[genotype compatibility]
-				compatibility_threshold = 3.0
-				compatibility_change    = 0.0
-				excess_coeficient       = 1.0
-				disjoint_coeficient     = 1.0
-				weight_coeficient       = 0.4
+	% 			[genotype compatibility]
+	% 			compatibility_threshold = 3.0
+	% 			compatibility_change    = 0.0
+	% 			excess_coeficient       = 1.0
+	% 			disjoint_coeficient     = 1.0
+	% 			weight_coeficient       = 0.4
 
-				[species]
-				species_size        = 10
-				survival_threshold  = 0.2
-				old_threshold       = 30
-				youth_threshold     = 10
-				old_penalty         = 0.2
-				youth_boost         = 1.2
-				max_stagnation      = 15
-			\end{verbatim}
-		% subsection configuration_for_basic_experiment (end)
+	% 			[species]
+	% 			species_size        = 10
+	% 			survival_threshold  = 0.2
+	% 			old_threshold       = 30
+	% 			youth_threshold     = 10
+	% 			old_penalty         = 0.2
+	% 			youth_boost         = 1.2
+	% 			max_stagnation      = 15
+	% 		\end{verbatim}
+	% 	% subsection configuration_for_basic_experiment (end)
 
-		\pagebreak
-		\subsection{Configuration for Hive Fitness} % (fold)
-		\label{sub:configuration_for_hive_fitness}
-			\begin{verbatim}
-				[phenotype]
-				input_nodes         = 1
-				output_nodes        = 1
-				max_weight          = 30
-				min_weight          = -30
-				feedforward         = 0
-				nn_activation       = tanh 
-				hidden_nodes        = 0
-				weight_stdev        = 0.9
+	% 	\pagebreak
+	% 	\subsection{Configuration for Hive Fitness} % (fold)
+	% 	\label{sub:configuration_for_hive_fitness}
+	% 		\begin{verbatim}
+	% 			[phenotype]
+	% 			input_nodes         = 1
+	% 			output_nodes        = 1
+	% 			max_weight          = 30
+	% 			min_weight          = -30
+	% 			feedforward         = 0
+	% 			nn_activation       = tanh 
+	% 			hidden_nodes        = 0
+	% 			weight_stdev        = 0.9
 
-				[genetic]
-				pop_size              = 50
-				max_fitness_threshold = 1
+	% 			[genetic]
+	% 			pop_size              = 50
+	% 			max_fitness_threshold = 1
 
-				# Human reasoning
-				prob_addconn          = 0.05
-				prob_addnode          = 0.03
-				prob_mutatebias       = 0.2
-				bias_mutation_power   = 0.5
-				prob_mutate_weight    = 0.9
-				weight_mutation_power = 1.5
-				prob_togglelink       = 0.01
-				elitism               = 1
+	% 			# Human reasoning
+	% 			prob_addconn          = 0.05
+	% 			prob_addnode          = 0.03
+	% 			prob_mutatebias       = 0.2
+	% 			bias_mutation_power   = 0.5
+	% 			prob_mutate_weight    = 0.9
+	% 			weight_mutation_power = 1.5
+	% 			prob_togglelink       = 0.01
+	% 			elitism               = 1
 
-				[genotype compatibility]
-				compatibility_threshold = 3.0
-				compatibility_change    = 0.0
-				excess_coeficient       = 1.0
-				disjoint_coeficient     = 1.0
-				weight_coeficient       = 0.4
+	% 			[genotype compatibility]
+	% 			compatibility_threshold = 3.0
+	% 			compatibility_change    = 0.0
+	% 			excess_coeficient       = 1.0
+	% 			disjoint_coeficient     = 1.0
+	% 			weight_coeficient       = 0.4
 
-				[species]
-				species_size        = 10
-				survival_threshold  = 0.2
-				old_threshold       = 30
-				youth_threshold     = 10
-				old_penalty         = 0.2
-				youth_boost         = 1.2
-				max_stagnation      = 15
-			\end{verbatim}
-		% subsection configuration_for_hive_fitness (end)
+	% 			[species]
+	% 			species_size        = 10
+	% 			survival_threshold  = 0.2
+	% 			old_threshold       = 30
+	% 			youth_threshold     = 10
+	% 			old_penalty         = 0.2
+	% 			youth_boost         = 1.2
+	% 			max_stagnation      = 15
+	% 		\end{verbatim}
+	% 	% subsection configuration_for_hive_fitness (end)
 
-		\pagebreak
-		\subsection{Configuration for Recurrent Networks} % (fold)
-		\label{sub:configuration_for_recurrent_networks}
-			\begin{verbatim}
-				[phenotype]
-				input_nodes         = 4
-				output_nodes        = 1
-				max_weight          = 30
-				min_weight          = -30
-				feedforward         = 0
-				nn_activation       = tanh 
-				hidden_nodes        = 0
-				weight_stdev        = 0.9
+	% 	\pagebreak
+	% 	\subsection{Configuration for Recurrent Networks} % (fold)
+	% 	\label{sub:configuration_for_recurrent_networks}
+	% 		\begin{verbatim}
+	% 			[phenotype]
+	% 			input_nodes         = 4
+	% 			output_nodes        = 1
+	% 			max_weight          = 30
+	% 			min_weight          = -30
+	% 			feedforward         = 0
+	% 			nn_activation       = tanh 
+	% 			hidden_nodes        = 0
+	% 			weight_stdev        = 0.9
 
-				[genetic]
-				pop_size              = 50
-				max_fitness_threshold = 1
+	% 			[genetic]
+	% 			pop_size              = 50
+	% 			max_fitness_threshold = 1
 
-				# Human reasoning
-				prob_addconn          = 0.05
-				prob_addnode          = 0.03
-				prob_mutatebias       = 0.2
-				bias_mutation_power   = 0.5
-				prob_mutate_weight    = 0.9
-				weight_mutation_power = 1.5
-				prob_togglelink       = 0.01
-				elitism               = 1
+	% 			# Human reasoning
+	% 			prob_addconn          = 0.05
+	% 			prob_addnode          = 0.03
+	% 			prob_mutatebias       = 0.2
+	% 			bias_mutation_power   = 0.5
+	% 			prob_mutate_weight    = 0.9
+	% 			weight_mutation_power = 1.5
+	% 			prob_togglelink       = 0.01
+	% 			elitism               = 1
 
-				[genotype compatibility]
-				compatibility_threshold = 3.0
-				compatibility_change    = 0.0
-				excess_coeficient       = 1.0
-				disjoint_coeficient     = 1.0
-				weight_coeficient       = 0.4
+	% 			[genotype compatibility]
+	% 			compatibility_threshold = 3.0
+	% 			compatibility_change    = 0.0
+	% 			excess_coeficient       = 1.0
+	% 			disjoint_coeficient     = 1.0
+	% 			weight_coeficient       = 0.4
 
-				[species]
-				species_size        = 10
-				survival_threshold  = 0.2
-				old_threshold       = 30
-				youth_threshold     = 10
-				old_penalty         = 0.2
-				youth_boost         = 1.2
-				max_stagnation      = 15
-			\end{verbatim}
+	% 			[species]
+	% 			species_size        = 10
+	% 			survival_threshold  = 0.2
+	% 			old_threshold       = 30
+	% 			youth_threshold     = 10
+	% 			old_penalty         = 0.2
+	% 			youth_boost         = 1.2
+	% 			max_stagnation      = 15
+	% 		\end{verbatim}
 		% subsection configuration_for_recurrent_networks (end)
 	% section neat_configurations (end)
 
