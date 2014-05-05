@@ -107,16 +107,21 @@
 					\includegraphics[scale=.5]{results/hive_fitness_comp.png}
 				\end{center}
 				\caption{OH GOD}
-				\label{fig:figure1}
+				\label{fig:hive_fitness_composition}
 			\end{figure}
 
 			\begin{figure}[tb]
 				\begin{center}
 					\includegraphics[scale=.5]{results/hive_fitness_res.png}
 				\end{center}
-				\caption{Caption here}
-				\label{fig:figure1}
+				\caption{oh no bees}
+				\label{fig:hive_fitness_reserves}
 			\end{figure}
+
+			In this experiment, the bees still behaved overwhelmingly selfishly, for largely the same reasons as in the basic experiment. Although the hive fitness mechanic was added, the bees have no way of determining what the hive fitness currently is, and therefore have no way to adjust their actions to be altruistic or selfish, depending on the current state of the hive. Because of this, they continue to default to the same behavior of selfishness, because they are unaware of this new restriction on their behavior. Furthermore. because the same fitness modifier is applied to both the selfish bees and to the altruistic bees, the selfish bees have a similar advantage: 0.000007 is still better than 0.0001.
+
+			Subsequent experiments were run as a proof of concept, in which the fitness adjustment was only made to the selfish bees, and in which the selfish bees were all assigned 0 fitness. While these produced results in which the bees all wound up altruistic, further reporting on them is outside of the scope of this paper, which is attempting to get altruism without specifically encoding for it.
+
 		% subsection hive_fitness (end)
 
 		\subsection{Recurrent Networks} % (fold)
@@ -126,7 +131,7 @@
 
 		\subsection{Advice from Bees} % (fold)
 		\label{sub:advice_from_bees}
-		
+			%%RAVENNA DO THIS THING PLEASE
 		% subsection advice_from_bees (end)
 
 	% section experiments (end)
