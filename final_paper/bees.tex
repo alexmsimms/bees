@@ -116,21 +116,38 @@
 
 			In this experiment, the bees still behaved overwhelmingly selfishly, for largely the same reasons as in the basic experiment. Although the hive fitness mechanic was added, the bees have no way of determining what the hive fitness currently is, and therefore have no way to adjust their actions to be altruistic or selfish, depending on the current state of the hive. Because of this, they continue to default to the same behavior of selfishness, because they are unaware of this new restriction on their behavior. Furthermore. because the same fitness modifier is applied to both the selfish bees and to the altruistic bees, the selfish bees have a similar advantage: 0.000007 is still better than 0.0001.
 
-			Subsequent experiments were run as a proof of concept, in which the fitness adjustment was only made to the selfish bees, and in which the selfish bees were all assigned 0 fitness. While these produced results in which the bees all wound up altruistic, further reporting on them is outside of the scope of this paper, which is attempting to get altruism without specifically encoding for it.
+			Subsequent experiments were run as a proof of concept, in which the fitness adjustment was only made to the selfish bees, and in which the selfish bees were all assigned a fitness value of 0. While these produced results in which the bees all wound up altruistic, further reporting on them is outside of the scope of this paper, which is attempting to get altruism without specifically encoding for it.
 
 		% subsection hive_fitness (end)
 
 		\subsection{Recurrent Networks} % (fold)
 		\label{sub:recurrent_networks}
-		% \lipsum[12-14]
+
+			\begin{figure}[tb]
+				\begin{center}
+					\includegraphics[scale=.5]{bee_diagrams/recurrent_system.png}
+				\end{center}
+				\caption{In addition to the nectar found, the networks now include THING, THING, and THING.}
+				\label{fig:recurrent_system}
+			\end{figure}
+
 		% subsection recurrent_networks (end)
 
 		\subsection{Advice from Bees} % (fold)
 		\label{sub:advice_from_bees}
+
 			One major factor that has been missing from this simulation of social order so far is, of course, direct interaction between the individuals. Each agent has control over their own decision, which may indirectly affect the destiny of the entire hive, but beyond this they have no opportunity to influence other members of their community, as does happen in real life. For example, another way that real biological bees cooperate within the hive is by sharing information about sites where they have foraged, essentially notifying other bees where to get the most nectar from. 
 
 			To implement this, a second output was added to the neural network: the decision whether or not to give another bee advice. This decision gets taken into account by the next bee in the population. If advice was given AND the previous bee found enough nectar for the advice to be beneficial, the current bee will take that advice and receive the same amount of found nectar as the previous bee. Otherwise, found nectar will be randomized as usual.
 
+
+			\begin{figure}[tb]
+				\begin{center}
+					\includegraphics[scale=.5]{bee_diagrams/gossip_system.png}
+				\end{center}
+				\caption{In addition to the nectar found, the networks now include THING, THING, and THING.}
+				\label{fig:gossip_system}
+			\end{figure}
 
 		% subsection advice_from_bees (end)
 
@@ -151,6 +168,9 @@
 		Unlike the true Prisoner's Dilemna, instead of temptation/sucker and reward/punishment being linked, our experiment has temptation/reward and punishment/sucker linked. Also, punishment and sucker potentially receive the same amount of low payoff. This could supposedly lower the potential for selfishness since acting altruistically no longer possibly leads to a worse ending than acting selfishly.
 
 	% section discussion (end)
+
+	%%%%%%%%%%%%%%%%%%% HERE THERE BE APPENDICES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 	% \singlespacing
 	% \appendix
 	% \pagebreak
