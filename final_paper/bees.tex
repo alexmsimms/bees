@@ -4,7 +4,6 @@
 \usepackage[margin=1in]{geometry}
 
 \usepackage{fancyvrb}
-% \usepackage{lipsum}
 \usepackage{cite}
 \usepackage{graphicx}
 
@@ -31,11 +30,11 @@
 		% discuss these papers here. 
 		
 
-		Cooperative behavior has frequently been discussed within the contexts of artificial intelligence. The Prisoner's Dilemna itself often serves as a basis for these discussions due to its relevance to issues of social order and the challenges thereof. Michael W. Macy's paper on ``Social Order in Artificial Worlds'' describes the Prisoner's Dilemna as the ``paradox of social order''. \cite{macy} Macy specifically names four possible outcomes in the Prisoner's Dilemna, ordered by the amount of payoff: temptation (defecting while the other prisoner remains silent), reward (both prisoners staying silent), punishment (both prisoners defect), and sucker (staying silent while the other prisoner betrays you). The reason why this game can be called a paradox is that the choice leading to the highest payoff (selfishness) also has the potential for the greatest failure. Since our experiments take place not on an individual-to-individual level but rather in a large hive-type colony, our experiments don't explicitly use the Prisoner's Dilemna. However, each agent has a similar choice of selfishness or altruism with somewhat similar outcomes, only on a larger communal scale. It should be noted that we do also differ from the Prisoner's Dilemna in one other significant way: our experiments focus not on how selfishness in one agent causes suffering in another, but rather how selfishness negatively impacts the entire community overall, including the selfish individuals themselves.
+		Cooperative behavior has frequently been discussed within the contexts of artificial intelligence. The Prisoner's Dilemma itself often serves as a basis for these discussions due to its relevance to issues of social order and the challenges thereof. Michael W. Macy's paper on ``Social Order in Artificial Worlds'' describes the Prisoner's Dilemma as the ``paradox of social order''. \cite{macy} Macy specifically names four possible outcomes in the Prisoner's Dilemma, ordered by the amount of payoff: temptation (defecting while the other prisoner remains silent), reward (both prisoners staying silent), punishment (both prisoners defect), and sucker (staying silent while the other prisoner betrays you). The reason why this game can be called a paradox is that the choice leading to the highest payoff (selfishness) also has the potential for the greatest failure. Since our experiments take place not on an individual-to-individual level but rather in a large hive-type colony, our experiments don't explicitly use the Prisoner's Dilemma. However, each agent has a similar choice of selfishness or altruism with somewhat similar outcomes, only on a larger communal scale. It should be noted that we do also differ from the Prisoner's Dilemma in one other significant way: our experiments focus not on how selfishness in one agent causes suffering in another, but rather how selfishness negatively impacts the entire community overall, including the selfish individuals themselves.
 
-		As mentioned by Macy, the single-iteration Prisoner's Dilemna is best played with a selfish dominant strategy, according to game theory. Our experiments show the same, for reasons discussed later. However, this strategy is not the best when the Prisoner's Dilemna is repeated, as expanded upon in David B. Fogel's ``Evolving Behaviors in the Iterated Prisoner's Dilemna'' \cite{fogel}. As in our experiment, Fogel explicitly evolved best strategies over many different simulations of the scenario. A recurrent Prisoner's Dilemna is often effective because players will learn over time which individuals are more likely to defect or cooperate, and adjust their strategies accordingly when facing each of those individuals. However, in a hive environment where many independent agents are making the decision simultaneously, this is not a viable option to learn. Instead, for some of our experiments, recurrent networks are used to provide each generation of agents with several rounds of simulations and information from each one in order to learn general trends of the hive.
+		As mentioned by Macy, the single-iteration Prisoner's Dilemma is best played with a selfish dominant strategy, according to game theory. Our experiments show the same, for reasons discussed later. However, this strategy is not the best when the Prisoner's Dilemma is repeated, as expanded upon in David B. Fogel's ``Evolving Behaviors in the Iterated Prisoner's Dilemma'' \cite{fogel}. As in our experiment, Fogel explicitly evolved best strategies over many different simulations of the scenario. A recurrent Prisoner's Dilemma is often effective because players will learn over time which individuals are more likely to defect or cooperate, and adjust their strategies accordingly when facing each of those individuals. However, in a hive environment where many independent agents are making the decision simultaneously, this is not a viable option to learn. Instead, for some of our experiments, recurrent networks are used to provide each generation of agents with several rounds of simulations and information from each one in order to learn general trends of the hive.
 
-		Finally, Sarit Kraus' ``Negotiation and cooperation in multi-agent environments'' discusses the possibilities of acheiving cooperation in a shared environment like the hive simulation set up for this experiment \cite{kraus}. One such strategy discussed suggests that in situations where resources must be shared, a communication system may benefit self-motivated agents. Along a similar line of thinking, the last experiment of this paper (Advice System) implements a system in which agents have the opportunity of increasing overall hive resources by communicating where more resources can be found. Kraus also names coalition formation as a method of increasing benefits across the board for self-motivated agents. 
+		Finally, Sarit Kraus' ``Negotiation and cooperation in multi-agent environments'' discusses the possibilities of achieving cooperation in a shared environment like the hive simulation set up for this experiment \cite{kraus}. One such strategy discussed suggests that in situations where resources must be shared, a communication system may benefit self-motivated agents. Along a similar line of thinking, the last experiment of this paper (Advice System) implements a system in which agents have the opportunity of increasing overall hive resources by communicating where more resources can be found. Kraus also names coalition formation as a method of increasing benefits across the board for self-motivated agents. 
 
 
 	% section introduction (end)
@@ -50,7 +49,7 @@
 		\label{sub:the_bee_model}
 			To conduct these experiments, a model was developed that takes inspiration from the nectar-collecting hive insect, known in some circles as the bee. Our model consists of a population of individual neural nets, evolving by the NeuroEvolution of Adapting Topologies algorithm, henceforth referred to as NEAT.\cite{neat} NEAT, first developed by the illustrious Kenneth O. Stanley, is a genetic algorithm that has a flexible genetic encoding that allows for the topology of the network to grow and change over time, based on a user-defined measure of ``fitness''. All of the genes within the genetic encoding are tagged with historical markings, which allows for quick implementation of ``crossing-over,'' the process by which genetic information from an individual's parents is mixed. Finally, NEAT allows for speciation: individuals within the population are grouped together based on the similarness of their genomes, and only those individuals with similar genomes are allowed to reproduce. This allows for each species to find its own niche, and prevents any one species from outcompeting all of the others. It is because of these features that NEAT was selected for this task.
 
-			Each individual NEAT agent within this model is called a ``bee'', and the population of all of the NEAT agents is called the ``hive''. Each ``day'' within this model, all of the bees leave the hive to go and find nectar. The nectar is represented in this model as a random floating-point number between 0 and 1. When it recieves this nectar, it has the choice to either be selfish or altruistic. If the bee decides to be selfish, it eats the nectar then and there. If it decides to be altruistic, it brings the nectar back to the hive, where all of the nectar brought back by altruistic bees is pooled and shared equally among all of the altruistic bees. The ``fitness'' in this system is simply how much nectar a bee was able to eat on a given day.
+			Each individual NEAT agent within this model is called a ``bee'', and the population of all of the NEAT agents is called the ``hive''. Each ``day'' within this model, all of the bees leave the hive to go and find nectar. The nectar is represented in this model as a random floating-point number between 0 and 1. When it receives this nectar, it has the choice to either be selfish or altruistic. If the bee decides to be selfish, it eats the nectar then and there. If it decides to be altruistic, it brings the nectar back to the hive, where all of the nectar brought back by altruistic bees is pooled and shared equally among all of the altruistic bees. The ``fitness'' in this system is simply how much nectar a bee was able to eat on a given day.
 		% subsection the_bee_model (end)
 
 		\subsection{Basic Experiment} % (fold)
@@ -73,7 +72,7 @@
 				\label{fig:basic_experiment_composition}
 			\end{figure}
 
-			In all of the trials run, the majority of the bees wound up selfish. A representative trial is shown in Figure \ref{fig:basic_experiment_composition}. There are a number of reasons for this, the most pressing being the fact that the bees had no direct incentive to act altruistically. While more stable fitnesses could theoretically be obtained through altruism, the system only works if a all of the bees are acting altruistically: enough bees will bring back above-average amoutns of nectar to offset the bees that bring back a below-average aomunt of nectar. However, if too few bees are acting altruistically, then this buffering effect is not present. 
+			In all of the trials run, the majority of the bees wound up selfish. A representative trial is shown in Figure \ref{fig:basic_experiment_composition}. There are a number of reasons for this, the most pressing being the fact that the bees had no direct incentive to act altruistically. While more stable fitnesses could theoretically be obtained through altruism, the system only works if a all of the bees are acting altruistically: enough bees will bring back above-average amounts of nectar to offset the bees that bring back a below-average amount of nectar. However, if too few bees are acting altruistically, then this buffering effect is not present. 
 
 
 		% subsection basic_experiment (end)
@@ -102,7 +101,7 @@
 				\begin{center}
 					\includegraphics[scale=.75]{results/hive_fitness_comp.png}
 				\end{center}
-				\caption{OH GOD}
+				\caption{The addition of the hive fitness component to bee fitness was unsuccessful in coercing the bees to behave more altruistically.}
 				\label{fig:hive_fitness_composition}
 			\end{figure}
 
@@ -110,7 +109,7 @@
 				\begin{center}
 					\includegraphics[scale=.75]{results/hive_fitness_res.png}
 				\end{center}
-				\caption{oh no bees}
+				\caption{Although the bees' fitnesses continued to shrink along with the hive fitness, they did not behave altruistically.}
 				\label{fig:hive_fitness_reserves}
 			\end{figure}
 
@@ -141,7 +140,7 @@
 				\begin{center}
 					\includegraphics[scale=.75]{results/recurrent_comp.png}
 				\end{center}
-				\caption{Caption here}
+				\caption{The wavering pattern shown in the later generations cropped up very consistently across experiments, and serves to maintain hive nectar at a particular level.}
 				\label{fig:recurrent_composition}
 			\end{figure}
 
@@ -149,10 +148,11 @@
 				\begin{center}
 					\includegraphics[scale=.75]{results/recurrent_res.png}
 				\end{center}
-				\caption{Caption here}
+				\caption{Under the recurrent network, the bees were able to maintain relatively high hive fitness.}
 				\label{fig:recurrent_reserves}
 			\end{figure}
 
+			Under the recurrent system, consistently higher hive fitnesses were maintained (see Figure \ref{fig:recurrent_reserves}), despite the fact that the majority of the bees were selfish (see Figure \ref{fig:recurrent_composition}). This is because the bees are acting just altruistic enough to keep the hive alive, while acting selfishly for the rest of the time. This is facilitated largely by the input reminding the bees of hive nectar reserves. The nectar dips down twice in the experiment shown in Figure \ref{fig:recurrent_reserves}, however: this two drops represent the networks learning the implications of that input on their fitness. After it is discovered, they maintain the hive fitness at a reasonable level.
 
 		% subsection recurrent_networks (end)
 
@@ -192,7 +192,7 @@
 		\item Punishment: enough agents are selfish that hive fitness drops for all
 		\item Sucker: a minority of agents behave altruistically while a majority behave selfishly, reducing hive fitness for all
 		\end{itemize}
-		Unlike the true Prisoner's Dilemna, instead of temptation/sucker and reward/punishment being linked, our experiment has temptation/reward and punishment/sucker linked. Also, punishment and sucker potentially receive the same amount of low payoff. This could supposedly lower the potential for selfishness since acting altruistically no longer possibly leads to a worse ending than acting selfishly.
+		Unlike the true Prisoner's Dilemma, instead of temptation/sucker and reward/punishment being linked, our experiment has temptation/reward and punishment/sucker linked. Also, punishment and sucker potentially receive the same amount of low payoff. This could supposedly lower the potential for selfishness since acting altruistically no longer possibly leads to a worse ending than acting selfishly.
 
 	% section discussion (end)
 
