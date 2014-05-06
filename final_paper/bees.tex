@@ -144,14 +144,14 @@
 
 			One major factor that has been missing from this simulation of social order so far is, of course, direct interaction between the individuals. Each agent has control over their own decision, which may indirectly affect the destiny of the entire hive, but beyond this they have no opportunity to influence other members of their community, as does happen in real life. For example, another way that real biological bees cooperate within the hive is by sharing information about sites where they have foraged, essentially notifying other bees where to get the most nectar from. 
 
-			To implement this, a second output was added to the neural network: the decision whether or not to give another bee advice. This decision gets taken into account by the next bee in the population. If advice was given AND the previous bee found enough nectar for the advice to be beneficial, the current bee will take that advice and receive the same amount of found nectar as the previous bee. Otherwise, found nectar will be randomized as usual.
+			To implement this, a second output was added to the neural network: the decision whether or not to give another bee advice (see Figure \ref{fig:gossip_system}. This decision gets taken into account by the next bee in the population. If advice was given AND the previous bee found enough nectar for the advice to be beneficial, the current bee will take that advice and receive the same amount of found nectar as the previous bee. Otherwise, found nectar will be randomized as usual. The general aim of this experiment was to observe how the bees would choose to exploit this opportunity and what trends in altruism or selfishness might result from prosperous advice.
 
 
 			\begin{figure}[tb]
 				\begin{center}
 					\includegraphics[scale=.5]{bee_diagrams/gossip_system.png}
 				\end{center}
-				\caption{In addition to the nectar found, the networks now include THING, THING, and THING.}
+				\caption{In addition to the first decision output, the second output represents a choice to share helpful information with other bees.}
 				\label{fig:gossip_system}
 			\end{figure}
 
@@ -163,6 +163,8 @@
 	\label{sec:discussion}
 		One substantial difficulty for the development of altruism comes from the way that the fitness function is implemented. All of the bees coming back are coming back with nectar in the range of 0 and 1, so amortized, choosing to be altruistic is choosing a fitness of $0.5$.Choosing to be selfish has the potential to obtain much higher
 		fitnesses than that, and those individuals will be able to reproduce.
+
+		It is important to note that altruism is of course perfectly possible and easily implemented, as we have done in the trivial examples above, along with other test runs in which we set fitness only proportional to overall hive fitness. If the programmer explicitly rewards or punishes behaviors, or directly links motivation solely to the group rather than the individual, we will achieve good results, but lose the factor of self-motivation and inherent self-interest that we know is present in real life communities. Despite the nature of this experiment, a hive mind is undesirable. Although our results are not as promising or as optimistic as initially hoped for, further research on self-motivated independent cooperation would be valuable. 
 
 		%for comparison to Macy
 		\begin{itemize}
