@@ -123,11 +123,17 @@
 		\subsection{Recurrent Networks} % (fold)
 		\label{sub:recurrent_networks}
 
+
+			In this experiment, the bee model is considerably more fleshed-out. The bees now live for more than one day, and have considerably more inputs than they did before. Each individual day proceeds as it did in the last experiment: the bees go out to collect nectar, bring it back to the hive or eat it while they're out, and the nectar brought back to the hive is shared between the bees that brought back nectar, modulo a small amount of honey necessary to support the hive itself. However, the bees now have a way of determining how much nectar is in the hive. This is a very important input, because there fitness rests on keeping this value within appropriate ranges. 
+
+			Recurrent networks can be much better at predicting the results that their behavior will have on their environment. Because of this, recurrent networks will used in this experiment. To get the most out of this recurrence, the bees will also have inputs corresponding to the choice they made ``yesterday,'' as well as how much fitness they got. (See Figure \ref{fig:recurrent_system})
+
+
 			\begin{figure}[tb]
 				\begin{center}
 					\includegraphics[scale=.5]{bee_diagrams/recurrent_system.png}
 				\end{center}
-				\caption{In addition to the nectar found, the networks now include THING, THING, and THING.}
+				\caption{In addition to the nectar found, the networks now include the choice that the bee made yesterday, as well as the amount of fitness they recieved, and the level of the hive nectar.}
 				\label{fig:recurrent_system}
 			\end{figure}
 
