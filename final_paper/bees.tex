@@ -6,11 +6,11 @@
 \usepackage{fancyvrb}
 \usepackage{cite}
 \usepackage{graphicx}
-
+\usepackage{placeins}
 
 \title  {``Bees?''\\ A Large Scale, Co-operative Simulation 
          Weighing Altruism and Selfishness}
-\author {Alexander Simms, Ravenna Thielstrom}
+\author {Alexander Simms, tRavenna Thielstrom}
 \date   {CS 81: Adaptive Robotics, Spring 2014}
 \begin{document}
 	\maketitle
@@ -76,10 +76,10 @@
 
 
 		% subsection basic_experiment (end)
-
+		\FloatBarrier
 		\subsection{Hive Fitness} % (fold)
-		\label{sub:hive_fitness}
-			How, then, can this selfishness be subverted? Well, in the real world, actual hives collect the nectar that the bees bring in, and convert it in to honey. This is the inspiration for a measure of ``hive fitness,'' which we have implemented as an integer between 0 and 10, indicating how much nectar the hive has on ``reserve''. Each day, when the altruistic bees bring the honey back, a tenth of the honey is taken from them and put into the hive, to support the ``queen,'' who eats 0.5 units of nectar per day. The amount of nectar in the reserve is turned into a modifier as described in Figure \ref{fig:modifier_algorithm}, which is then multiplied by the amount of nectar each bee finds to determine their fitness.
+		\label{sub:		\FloatBarrierhive_fitness}
+				How, then, can this selfishness be subverted? Well, in the real world, actual hives collect the	\FloatBarrier nectar that the bees bring in, and convert it in to honey. This is the inspiration for a measure of ``hive fitness,'' which we have implemented as an integer between 0 and 10, indicating how much nectar the hive has on ``reserve''. Each day, 	\FloatBarrierwhen the altruistic bees bring the honey back, a tenth of the honey is taken from them and put into the hive, to support the ``queen,'' who eats 0.5 units of nectar per day. The amount of nectar in the reserve is turned into a modifier as described in Figure \ref{fig:modifier_algorithm}, which is then multiplied by the amount of nectar each bee finds to determine their fitness.
 
 			\begin{figure}[tb]
 				%% HERE THERE BE DRAGONS:
@@ -118,12 +118,12 @@
 			Subsequent experiments were run as a proof of concept, in which the fitness adjustment was only made to the selfish bees, and in which the selfish bees were all assigned a fitness value of 0. While these produced results in which the bees all wound up altruistic, further reporting on them is outside of the scope of this paper, which is attempting to get altruism without specifically encoding for it.
 
 		% subsection hive_fitness (end)
-
+		\FloatBarrier
 		\subsection{Recurrent Networks} % (fold)
-		\label{sub:recurrent_networks}
+			\label{sub:	\FloatBarrierrecurrent_networks}
 
 
-			In this experiment, the bee model is considerably more fleshed-out. The bees now live for more than one day, and have considerably more inputs than they did before. Each individual day proceeds as it did in the last experiment: the bees go out to collect nectar, bring it back to the hive or eat it while they're out, and the nectar brought back to the hive is shared between the bees that brought back nectar, modulo a small amount of honey necessary to support the hive itself. However, the bees now have a way of determining how much nectar is in the hive. This is a very important input, because there fitness rests on keeping this value within appropriate ranges. 
+	\FloatBarrier			In this experiment, the bee model is considerably more fleshed-out. The bees now live for more than one day, and have considerably more inputs than they did before. Each individual day proceeds as it did in the last experiment: the bees go out to collect nectar, bring it back to the hive or eat it while they're out, and the nectar brought back to the hive is shared between the bees that brought back nectar, modulo a small amount of honey necessary to support the hive itself. However, the bees now have a way of determining how much nectar is in the hive. This is a very important input, because there fitness rests on keeping this value within appropriate ranges. 
 
 			Recurrent networks can be much better at predicting the results that their behavior will have on their environment. Because of this, recurrent networks will used in this experiment. To get the most out of this recurrence, the bees will also have inputs corresponding to the choice they made ``yesterday,'' as well as how much fitness they got. (See Figure \ref{fig:recurrent_system})
 
@@ -155,11 +155,11 @@
 			Under the recurrent system, consistently higher hive fitnesses were maintained (see Figure \ref{fig:recurrent_reserves}), despite the fact that the majority of the bees were selfish (see Figure \ref{fig:recurrent_composition}). This is because the bees are acting just altruistic enough to keep the hive alive, while acting selfishly for the rest of the time. This is facilitated largely by the input reminding the bees of hive nectar reserves. The nectar dips down twice in the experiment shown in Figure \ref{fig:recurrent_reserves}, however: this two drops represent the networks learning the implications of that input on their fitness. After it is discovered, they maintain the hive fitness at a reasonable level.
 
 		% subsection recurrent_networks (end)
-
+		\FloatBarrier
 		\subsection{Advice from Bees} % (fold)
 		\label{sub:advice_from_bees}
 
-			One major factor that has been missing from this simulation of social order so far is, of course, direct interaction between the individuals. Each agent has control over their own decision, which may indirectly affect the destiny of the entire hive, but beyond this they have no opportunity to influence other members of their community, as does happen in real life. For example, another way that real biological bees cooperate within the hive is by sharing information about sites where they have foraged, essentially notifying other bees where to get the most nectar from. 
+			One maj	\FloatBarrieror factor that has been missing from this simulation of social order so far is, of course, direct interaction between the individuals. Each agent has control over their own decision, which may indirectly affect the destiny of the entire hive, but beyond this they have no opportunity to influence other members of their community, as does happen in real life. For example, another way that real biological bees cooperate within the hive is by sharing information about sites where they have foraged, essentially notifying other bees where to get the most nectar from. 
 
 			To implement this, a second output was added to the neural network: the decision whether or not to give another bee advice (see Figure \ref{fig:gossip_system}. This decision gets taken into account by the next bee in the population. If advice was given AND the previous bee found enough nectar for the advice to be beneficial, the current bee will take that advice and receive the same amount of found nectar as the previous bee. Otherwise, found nectar will be randomized as usual. The general aim of this experiment was to observe how the bees would choose to exploit this opportunity and what trends in altruism or selfishness might result from prosperous advice.
 
@@ -226,7 +226,7 @@
 		% subsection advice_from_bees (end)
 
 	% section experiments (end)
-
+	\FloatBarrier
 
 	\section{Discussion} % (fold)
 	\label{sec:discussion}
