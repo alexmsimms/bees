@@ -19,7 +19,9 @@
 	\begin{abstract}
 		% A short abstract of 200 to 300 words summarizing your findings. 
 
-		The Prisoner’s dilemma, in philosophy, is a hypothetical situation that tests human nature. Two criminals are imprisoned. If, however, one prisoner should choose to defect and betray the other, he will be set free and the betrayed prisoner will receive 3 years of prison. If, on the other hand, they simultaneously betray each other, both will receive a 2 year sentence. Cooperative silence from both parties gets them both a lesser sentence of 1 year. Although a human may argue that altruism is the best option for both parties, game theory states that in this situation, one should always choose to betray in order to minimize personal loss, and indeed one would expect this kind of decision from an artificial agent. Yet plenty of communities exist in nature that revolve around altruistic cooperation- for example, a bee colony, where individual bees retrieve nectar for the communal hive rather than scouting selfishly for their own survival. Although cooperation can certainly be implemented into an artificial life simulation, from an evolutionary standpoint a more interesting question is raised: can the interactions of a group and the parameters of their environment produce emergent cooperation among independent agents? This research aims to investigate the possibility of emergent altruism through evolutionary game theory. To this effect, NEAT was used to evolve neural-net topologies across many generations in a bee colony simulation, testing what possible circumstances might lead to altruistic decisions or selfish decisions in the hive. Initial speculation produced a hypothesis that the amount of altruism and selfishness demonstrated in NEAT-trained agents will be most affected by an individual fitness relying on group fitness. However, the results of the experiments demonstrate that while this is partly true and group fitness is key to altering artificial behavior, in the end selfishness wins out.
+
+		Plenty of communities exist in nature that revolve around altruistic cooperation- for example, a bee colony, where individual bees retrieve nectar for the communal hive rather than scouting selfishly for their own survival. Although cooperation can certainly be implemented into an artificial life simulation, from an evolutionary standpoint a more interesting question is raised: can the interactions of a group and the parameters of their environment produce emergent cooperation among independent agents? This research aims to investigate the possibility of emergent altruism through evolutionary game theory. To this effect, NEAT was used to evolve neural-net topologies across many generations in a bee colony simulation, testing what possible circumstances might lead to altruistic decisions or selfish decisions in the hive. Initial speculation produced a hypothesis that the amount of altruism and selfishness demonstrated in NEAT-trained agents will be most affected by an individual fitness relying on group fitness. The results of our experiments demonstrate that while this is partly true and group fitness is key to altering artificial behavior, selfishness generally continues to prevail, with cooperation only appearing in rare circumstances. Through group-affected fitness, however, agents can learn to use altruism strategically to mitigate the negative effects of selfishness.
+
 
 
 	\end{abstract}
@@ -31,7 +33,9 @@
 		% discuss these papers here. 
 		
 
-		Cooperative behavior has frequently been discussed within the contexts of artificial intelligence. The prisoner's dilemma itself often serves as a basis for these discussions due to its relevance to issues of social order and the challenges thereof. Michael W. Macy's paper on ``Social Order in Artificial Worlds'' describes the prisoner's dilemma as the ``paradox of social order''. \cite{macy} Macy specifically names four possible outcomes in the prisoner's dilemma, ordered by the amount of payoff: temptation (defecting while the other prisoner remains silent), reward (both prisoners staying silent), punishment (both prisoners defect), and sucker (staying silent while the other prisoner betrays you). The reason why this game can be called a paradox is that the choice leading to the highest payoff (selfishness) also has the potential for the greatest failure. The experiments outlined in this paper take place not on an individual-to-individual level but rather in a large hive-type colony, they don't explicitly use the prisoner's dilemma. However, each agent has a similar choice of selfishness or altruism with somewhat similar outcomes, only on a larger communal scale. It should be noted that the experiments outlined in this paper also differ from the prisoner's dilemma in one other significant way: these experiments focus not on how selfishness in one agent causes suffering in another, but rather how selfishness negatively impacts the entire community overall, including the selfish individuals themselves.
+<<<<<<< HEAD
+		Cooperative behavior has frequently been discussed within the contexts of artificial intelligence. The prisoner's dilemma itself often serves as a basis for these discussions due to its relevance to issues of social order and the challenges thereof. Michael W. Macy's paper on ``Social Order in Artificial Worlds'' describes the prisoner's dilemma as the ``paradox of social order''. \cite{macy} The prisoner’s dilemma, in philosophy, is a hypothetical situation that tests human nature. Two criminals are imprisoned. If, however, one prisoner should choose to defect and betray the other, he will be set free and the betrayed prisoner will receive 3 years of prison. If, on the other hand, they simultaneously betray each other, both will receive a 2 year sentence. Cooperative silence from both parties gets them both a lesser sentence of 1 year. Although a human may argue that altruism is the best option for both parties, game theory states that in this situation, one should always choose to betray in order to minimize personal loss, and indeed one would expect this kind of decision from an artificial agent. Macy specifically names four possible outcomes in the prisoner's dilemma, ordered by the amount of payoff: temptation (defecting while the other prisoner remains silent), reward (both prisoners staying silent), punishment (both prisoners defect), and sucker (staying silent while the other prisoner betrays you). The reason why this game can be called a paradox is that the choice leading to the highest payoff (selfishness) also has the potential for the greatest failure. The experiments outlined in this paper take place not on an individual-to-individual level but rather in a large hive-type colony, they don't explicitly use the prisoner's dilemma. However, each agent has a similar choice of selfishness or altruism with somewhat similar outcomes, only on a larger communal scale. It should be noted that the experiments outlined in this paper also differ from the prisoner's dilemma in one other significant way: these experiments focus not on how selfishness in one agent causes suffering in another, but rather how selfishness negatively impacts the entire community overall, including the selfish individuals themselves.
+
 
 		As mentioned by Macy, the single-iteration prisoner's dilemma is best played with a selfish dominant strategy, a conclusion that is also borne out in the experiments of this paper. However, this strategy is not the best when the prisoner's dilemma is repeated, as expanded upon in David B. Fogel's ``Evolving Behaviors in the Iterated Prisoner's Dilemma.'' \cite{fogel}  Fogel explicitly evolved best strategies over many different simulations of the scenario. A recurrent prisoner's dilemma is often effective because players will learn over time which individuals are more likely to defect or cooperate, and adjust their strategies accordingly when facing each of those individuals. However, in a hive environment where many independent agents are making the decision simultaneously, this is not a viable option to learn. Instead, for some of the experiments, recurrent networks are used to provide each generation of agents with several rounds of simulations and information from each one in order to learn general trends of the hive.
 
@@ -174,7 +178,7 @@
 				\begin{center}
 					\includegraphics[scale=.5]{results/gossip_plot_twist_comp.png}
 				\end{center}
-				\caption{The advice system doesn't seem to generally improve upon previous experiments, but semi-positive instances certainly did occur.}
+				\caption{The advice system doesn't seem to generally improve upon previous experiments, but semi-positive instances certainly did occur. The familiar wavering was often present.}
 				\label{fig:gossip_composition}
 			\end{figure}
 
@@ -182,7 +186,7 @@
 				\begin{center}
 					\includegraphics[scale=.5]{results/gossip_plot_twist_tell.png}
 				\end{center}
-                \caption{}
+                \caption{The correlation between guidance and altruism was generally found to be inversely proportionate, although this wasn't always the case.}
 				\label{fig:gossip_guidance}
 			\end{figure}
 
@@ -190,7 +194,7 @@
 				\begin{center}
 					\includegraphics[scale=.5]{results/gossip_plot_twist_res.png}
 				\end{center}
-				\caption{An example of the negative correlation between guidance and altruism.}
+				\caption{Hive fitness also is seemingly inversely proportionate in these cases.}
 				\label{fig:gossip_reserves}
 			\end{figure}
 
