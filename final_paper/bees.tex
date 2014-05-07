@@ -48,7 +48,7 @@
 
 		\subsection{The Bee Model} % (fold)
 		\label{sub:the_bee_model}
-			To conduct these experiments, a model was developed that takes inspiration from the nectar-collecting hive insect, known in some circles as the bee. Our model consists of a population of individual neural nets, evolving by the NeuroEvolution of Adapting Topologies algorithm, henceforth referred to as NEAT.\cite{neat} NEAT, first developed by the illustrious Kenneth O. Stanley, is a genetic algorithm that has a flexible genetic encoding that allows for the topology of the network to grow and change over time, based on a user-defined measure of ``fitness''. All of the genes within the genetic encoding are tagged with historical markings, which allows for quick implementation of ``crossing-over,'' the process by which genetic information from an individual's parents is mixed. Finally, NEAT allows for speciation: individuals within the population are grouped together based on the similarness of their genomes, and only those individuals with similar genomes are allowed to reproduce. This allows for each species to find its own niche, and prevents any one species from outcompeting all of the others. It is because of these features that NEAT was selected for this task.
+			To conduct these experiments, a model was developed that takes inspiration from the nectar-collecting hive insect, known in some circles as the bee. Our model consists of a population of individual neural nets, evolving by the NeuroEvolution of Adapting Topologies algorithm, henceforth referred to as NEAT.\cite{neat} NEAT, first developed by the illustrious Kenneth O. Stanley, is a genetic algorithm that has a flexible genetic encoding that allows for the topology of the network to grow and change over time, based on a user-defined measure of ``fitness''. All of the genes within the genetic encoding are tagged with historical markings, which allows for quick implementation of ``crossing-over,'' the process by which genetic information from an individual's parents is mixed. Finally, NEAT allows for speciation: individuals within the population are grouped together based on the similarity of their genomes, and only those individuals with similar genomes are allowed to reproduce. This allows for each species to find its own niche, and prevents any one species from outcompeting all of the others. It is because of these features that NEAT was selected for this task.
 
 			Each individual NEAT agent within this model is called a ``bee'', and the population of all of the NEAT agents is called the ``hive''. Each ``day'' within this model, all of the bees leave the hive to go and find nectar. The nectar is represented in this model as a random floating-point number between 0 and 1. When it receives this nectar, it has the choice to either be selfish or altruistic. If the bee decides to be selfish, it eats the nectar then and there. If it decides to be altruistic, it brings the nectar back to the hive, where all of the nectar brought back by altruistic bees is pooled and shared equally among all of the altruistic bees. The ``fitness'' in this system is simply how much nectar a bee was able to eat on a given day.
 		% subsection the_bee_model (end)
@@ -177,16 +177,16 @@
 				\begin{center}
 					\includegraphics[scale=.5]{results/gossip_plot_twist_comp.png}
 				\end{center}
-				\caption{An example of the negative correlation between guidance and altruism.}
-				\label{fig:recurrent_composition}
+				\caption{The advice system doesn't seem to generally improve upon previous experiments, but semi-positive instances certainly did occur.}
+				\label{fig:gossip_composition}
 			\end{figure}
 
 			\begin{figure}[tbph!]
 				\begin{center}
 					\includegraphics[scale=.5]{results/gossip_plot_twist_tell.png}
 				\end{center}
-                \caption{An example of the negative correlation between guidance and altruism.}
-				\label{fig:recurrent_reserves}
+                \caption{}
+				\label{fig:gossip_guidance}
 			\end{figure}
 
                         \begin{figure}[tbph!]
@@ -194,7 +194,7 @@
 					\includegraphics[scale=.5]{results/gossip_plot_twist_res.png}
 				\end{center}
 				\caption{An example of the negative correlation between guidance and altruism.}
-				\label{fig:recurrent_composition}
+				\label{fig:gossip_reserves}
 			\end{figure}
 
 			\begin{figure}[tbph!]
@@ -202,15 +202,15 @@
 					\includegraphics[scale=.5]{results/gossip_alt_comp.png}
 				\end{center}
 				\caption{A cooperative, altruistic society can be acheived very rarely.}
-				\label{fig:recurrent_reserves}
+				\label{fig:altruistic_composition}
 			\end{figure}
 
                         \begin{figure}[tbph!]
 				\begin{center}
 					\includegraphics[scale=.5]{results/gossip_alt_tell.png}
 				\end{center}
-                \caption{For this to happen, it seems guidance must be abandoned completely.}
-				\label{fig:recurrent_composition}
+                \caption{For this to happen, it seems guidance must be first abandoned, as can be seen around the 500 day mark.}
+				\label{fig:altruistic_guidance}
 			\end{figure}
 
 			\begin{figure}[tbph!]
@@ -218,12 +218,11 @@
 					\includegraphics[scale=.5]{results/gossip_alt_res.png}
 				\end{center}
                 \caption{As before, there seems to be a proportional relationship between guidance and selfishness.}
-				\label{fig:recurrent_reserves}
+				\label{fig:altruistic_reserves}
 			\end{figure}
 
 
-			Results from this experiment were sometimes inconclusive. Increases in guidance within the bee population generally corresponded with increases in selfishness, as seen in the graphs above.  However, hive fitness was affected in two different ways: some runs showed increases in hive fitness as guidance rose, and some runs showed decreases (although the latter was generally more prevalent). The rational behind this is that as guidance rises, the overall amount of found nectar rises, so hive fitness is more likely to rise if there are an acceptable amount of altruistic bees. On the other hand, bees that are consistently receiving an above average amount of nectar through guidance are also more likely to behave selfishly instead of altruistically, which obviously will decrease hive nectar. Overall, it seems that a lack of guidance actually corresponds to higher amounts of altruism, although to understand why this might be the case further research would be necessary. The system of one-way communication we've implemented, then, seems to achieve the opposite of the desired affect.
-
+            Results from this experiment were sometimes inconclusive. Increases in guidance within the bee population generally corresponded with increases in selfishness, as seen in the graphs above.  However, hive fitness was affected in two different ways: some runs showed increases in hive fitness as guidance rose, and some runs showed decreases (although the latter was generally more prevalent). The rational behind this is that as guidance rises, the overall amount of found nectar rises, so hive fitness is more likely to rise if there are an acceptable amount of altruistic bees. On the other hand, bees that are consistently receiving an above average amount of nectar through guidance are also more likely to behave selfishly instead of altruistically, which obviously will decrease hive nectar. Overall, it seems that a lack of guidance actually corresponds to higher amounts of altruism, although to understand why this might be the case further research would be necessary. The system of one-way communication we've implemented, then, seems to achieve the opposite of the desired affect. Yet, this was also the only experiment for which actual altruistic evolutions were found, despite having a very low frequency of appearence in our various experimental runs. Experiments under the exact same conditions and parameters were also repeatedly run without the advice system, but clear altruism was never exhibited. This would seem to suggest that the presence of the advice system is necessary somehow to achieve even these very rare results.
 		% subsection advice_from_bees (end)
 
 	% section experiments (end)
