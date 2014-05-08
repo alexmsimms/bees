@@ -26,7 +26,7 @@
 \usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
 \linespread{1.05} % Line spacing - Palatino needs more space between lines
 \usepackage{microtype} % Slightly tweak font spacing for aesthetics
-
+% \usepackage{fullpage}
 \usepackage[hmarginratio=1:1,top=32mm,columnsep=20pt]{geometry} % Document margins
 \usepackage{multicol} % Used for the two-column layout of the document
 \usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption} % Custom captions under/above floats in tables or figures
@@ -64,8 +64,8 @@
 \usepackage{placeins}
 
 
-  \hyphenpenalty=5000
-  \tolerance=1000
+\hyphenpenalty=5000
+\tolerance=1000
 
 
 %----------------------------------------------------------------------------------------
@@ -77,7 +77,7 @@
 
 \author{
 \large
-\textsc{Alexander Simms, tRavenna Thielstrom}\\[2mm] % Your name
+\textsc{Alexander Simms, Ravenna Thielstrom}\\[2mm] % Your name
 \normalsize Swarthmore College \\ % Your institution
 \vspace{-5mm}
 }
@@ -134,7 +134,7 @@
 
 		\subsection{Basic Experiment} % (fold)
 		\label{sub:basic_experiment}
-			An experiment was carried out to determine the workability of the model. In this experiment, each bee lived for only one day, and afterwards died. Their fitnesses determined the makeup of the next generation of bees: the most fit bees were bred to produce hopefully more fit offspring. The NEAT network evolved with the settings described in Appendix \ref{sub:configuration_for_basic_experiment}. Its only input was the nectar it found, again, a float between 0 and 1, and output represented the choice it made. (See Figure \ref{fig:naive_system}.)
+			An experiment was carried out to determine the workability of the model. In this experiment, each bee lived for only one day, and afterwards died. Their fitnesses determined the makeup of the next generation of bees: the most fit bees were bred to produce hopefully more fit offspring. The NEAT networks were evaluated using serial activation on a sigmoid function, as they were in all of the exeriments detailed in this paper. Its only input was the nectar it found, again, a float between 0 and 1, and output represented the choice it made. (See Figure \ref{fig:naive_system}.)
 
 			\begin{figure}[H]
 				\begin{center}
@@ -165,12 +165,12 @@
 				%% The verbatim environment is indented with spaces because
 				%% the Verbatim environment is stupid.
 				\begin{Verbatim}[frame=single]
-if hive_nectar > 10:
-    modifier = 1
-elif hive_nectar > 0:
-    modifier = hive_nectar / 10
-else:
-    modifier = .00001 
+    if hive_nectar > 10:
+        modifier = 1
+    elif hive_nectar > 0:
+        modifier = hive_nectar / 10
+    else:
+        modifier = .00001 
 				\end{Verbatim}
 				\caption{The fitness of each bee is affected by the amount of nectar reserves in the hive. The modifier defined by this section of code is multiplied by the amount of nectar the bee collected in order to determine that bee's fitness.}
 				\label{fig:modifier_algorithm}
@@ -201,7 +201,7 @@ else:
 			\label{sub:recurrent_networks}
 
 
-			In this experiment, the bee model is considerably more fleshed-out. The bees now live for more than one day, and have considerably more inputs than they did before. Each individual day proceeds as it did in the last experiment: the bees go out to collect nectar, bring it back to the hive or eat it while they're out, and the nectar brought back to the hive is shared between the bees that brought back nectar, modulo a small amount of honey necessary to support the hive itself. However, the bees now have a way of determining how much nectar is in the hive. This is a very important input, because there fitness rests on keeping this value within appropriate ranges. 
+			In this experiment, the bee model is considerably more fleshed-out. The bees now live for more than one day, and have considerably more inputs than they did before. Each individual day proceeds as it did in the last experiment: the bees go out to collect nectar, bring it back to the hive or eat it while they're out, and the nectar brought back to the hive is shared between the bees that brought back nectar, modulo a small amount of honey necessary to support the hive itself. However, the bees now have a way of determining how much nectar is in the hive. This is a very important input, because there fitness rests on keeping this value within appropriate ranges. This input is normalized in the same manner that fitness is in Figure \ref{fig:modifier_algorithm}.
 
 			Recurrent networks can be much better at predicting the results that their behavior will have on their environment. Because of this, recurrent networks will used in this experiment. To get the most out of this recurrence, the bees will also have inputs corresponding to the choice they made ``yesterday,'' as well as how much fitness they got. (See Figure \ref{fig:recurrent_system})
 
@@ -210,7 +210,7 @@ else:
 				\begin{center}
 					\includegraphics[width=.45\textwidth]{bee_diagrams/recurrent_system.png}
 				\end{center}
-				\caption{In addition to the nectar found, the networks now include the choice that the bee made yesterday, as well as the amount of fitness they received, and the level of the hive nectar.}
+				\caption{In addition to the nectar found, the networks now include the choice that the bee made yesterday, as well as the amount of fitness they received, and the level of the hive nectar, normalized between 0 and 1.}
 				\label{fig:recurrent_system}
 			\end{figure}
 
@@ -312,15 +312,9 @@ else:
 
 		It is important to note that altruism is of course perfectly possible and easily implemented, as has been mentioned in Section \ref{sub:hive_fitness}, along with other test runs in which each bee's fitness was simply the overall hive fitness. If the programmer explicitly rewards or punishes behaviors, or directly links motivation solely to the group rather than the individual, good results can be achieved, but at the cost of the factor of self-motivation and inherent self-interest that is present in real life communities. Despite the nature of this experiment, a hive mind is undesirable. Although our results are not as promising or as optimistic as initially hoped for, further research on self-motivated independent cooperation would be valuable. 
 
-		%for comparison to Macy
-		\begin{itemize}
-		\item Temptation: selfish agents receive a random (potentially above average) fitness
-		\item Reward: altruistic agents receive an average fitness
-		\item Punishment: enough agents are selfish that hive fitness drops for all
-		\item Sucker: a minority of agents behave altruistically while a majority behave selfishly, reducing hive fitness for all
-		\end{itemize}
-		Unlike the true prisoner's dilemma, instead of temptation/sucker and reward/punishment being linked, our experiment has temptation/reward and punishment/sucker linked. Also, punishment and sucker potentially receive the same amount of low payoff. This could supposedly lower the potential for selfishness since acting altruistically no longer possibly leads to a worse ending than acting selfishly.
+        One phenomenon of the experiment which occurred again and again was the wavering behavior of the agents' decisions, demonstrated in Figures 7, 10, and 13. The larger the wavering is, the more likely it is to correlate to a stabilized amount of hive nectar, usually at 0, but with smaller oscillations the wavering can signify a higher stabilized level depending on the conditions of the hive fitness modifications. Wavering is caused by the population rapidly varying the amount of altruistic/selfish decisions across days and generations. Since this generally occurs around one of the boundaries for punishment, it is logical to conclude that the bees, while not behaving truly cooperatively, can still evolve somewhat of a system for cooperation where altruism is practiced only in necessary moments to avoid hive punishment, and then reverting to selfishness once the danger has temporarily passed. This is obviously not an ideal community, especially since the oscillating tends to happen at 0, but the balance of selfish cooperation they have managed to achieve does grimly mimic some aspects of our own society...
 
+        Finally, the unexpected, rare appearance of unmistakable altruism during the advice system experiments is a result that cannot really be suitably explained with the knowledge available. The few instances where altruism appeared, as mentioned earlier, occurred only when the advice system was implemented, and the only clear pattern between them seemed to be that guidance dropped down to zero or close to zero just as altruism began to win out over selfishness. Why this happens is unclear since there doesn't seem to be any benefit to not giving advice, other than avoiding the discussed trend of selfishness resulting from the higher amount of nectar found.
 	% section discussion (end)
 
 
